@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edutics</title>
+    <link rel="shortcut icon" href="{% static 'favicon.svg' %}" type="image/x-icon">
+
+    <!-- plugins & libraries css -->
+    <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/slim-select/slimselect.css' %}">
+
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- HEADER SECTION START -->
+<header
+class="bg-edblue ed-header--2 relative z-[2] px-[7.9%] xxxxl:px-[6.5%] xxxl:px-[1%] lg:px-[15px] py-[25px] xxs:py-[16px] flex items-center justify-between to-be-fixed">
+<div class="logo xxs:max-w-[40%]"><a href="{% url 'home' %}"><img src="{% static 'img/logo-light.png' %}" alt="logo"
+            class="logo"></a></div>
+
+<div class="flex lg:items-center lg:gap-[30px]">
+    <div class="flex lg:flex-col items-center gap-[60px] xxl:gap-[25px] xl:gap-[30px] md:gap-y-[15px]">
+        <!-- search form -->
+        <form action="#"
+            class="to-go-to-sidebar-in-mobile max-w-[455px] xxl:max-w-[395px] lg:max-w-[95%] lg:mx-auto border border-white/20 lg:border-black/20 rounded-[6px] overflow-hidden h-[60px] flex xl:hidden lg:flex lg:my-[10px]">
+            <select name="category" id="ed-2-search-category"
+                class="bg-transparent text-white lg:text-edblue pl-[50px] pr-[19px] lg:px-[10px] focus:outline-none before:absolute lg:before:hidden before:w-[17px] before:h-[12px] before:bg-[url(../assets/img/icon/hamburger.svg)] before:bg-no-repeat before:bg-center before:bg-contain before:top-[50%] before:-translate-y-[50%] before:left-[22px]">
+                <option value="none" class="bg-edblue" data-placeholder="true">Categories</option>
+            </select>
+            <input type="text" name="search" id="ed-2-header-search"
+                class="w-full bg-transparent px-[20px] text-white lg:text-black focus:outline-0 focus-visible:outline-none">
+            <button type="submit" class="text-white lg:text-black pr-[20px]"><i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+        <!-- nav -->
+        <ul
+            class="to-go-to-sidebar-in-mobile ed-header-nav flex lg:flex-col gap-x-[43px] xxl:gap-x-[33px] font-kanit text-[17px] font-normal">
+            <li class="has-sub-menu relative">
+                <a role="button" href="{% url 'home' %}">Home</a>
+            </li>
+            <li><a href="about.html">About us</a></li>
+            <li class="has-sub-menu relative">
+                <a role="button" href="{% url 'courses' %}">Courses</a>
+            </li>
+            <li class="has-sub-menu relative">
+                <a role="button">Pages</a>
+
+                <ul class="ed-header-submenu">
+                    <li><a href="teachers.html">Teachers</a></li>
+                    <li><a href="teacher-details.html">Teacher Details</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="events-2.html">Events V.2</a></li>
+                    <li><a href="event-details.html">Event Details</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="coming-soon.html">Coming Soon Page</a></li>
+                    <li><a href="404.html">Error 404</a></li>
+                </ul>
+            </li>
+            <li class="has-sub-menu relative">
+                <a role="button">News</a>
+
+                <ul class="ed-header-submenu">
+                    <li><a href="news-grid.html">News Grid</a></li>
+                    <li><a href="news-list.html">News List</a></li>
+                    <li><a href="news-details.html">News Details</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact us</a></li>
+        </ul>
+
+        <!-- right actions -->
+        <div class="flex items-center gap-x-[60px] xxl:gap-x-[25px] lg:gap-x-[20px]">
+            <button class="ed-cart-opener-btn group">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path
+                            d="M12.9894 13.6354H6.93871C6.06616 13.6354 5.2925 13.0682 5.05637 12.2557L3.01122 5.38995C2.93856 5.14134 2.69705 4.97072 2.42122 4.97072H0.818742C0.446713 4.97072 0.145996 4.67212 0.145996 4.30421C0.145996 3.93629 0.446713 3.6377 0.818742 3.6377H2.42122C3.29377 3.6377 4.06676 4.2049 4.30289 5.01737L4.68568 6.30374H14.9753C15.3951 6.30374 15.7934 6.50169 16.0403 6.83361C16.2852 7.16287 16.3558 7.57477 16.234 7.96402L14.8462 12.3283C14.5744 13.1161 13.8296 13.6354 12.9894 13.6354Z"
+                            class="fill-white group-hover:fill-edyellow" />
+                        <path
+                            d="M7.54617 16.9687C6.80414 16.9687 6.20068 16.3707 6.20068 15.6353C6.20068 14.9 6.80414 14.302 7.54617 14.302C8.28821 14.302 8.89167 14.9 8.89167 15.6353C8.89167 16.3707 8.28821 16.9687 7.54617 16.9687Z"
+                            class="fill-white group-hover:fill-edyellow" />
+                        <path
+                            d="M12.2556 16.9687C11.5136 16.9687 10.9102 16.3707 10.9102 15.6353C10.9102 14.9 11.5136 14.302 12.2556 14.302C12.9977 14.302 13.6011 14.9 13.6011 15.6353C13.6011 16.3707 12.9977 16.9687 12.2556 16.9687Z"
+                            class="fill-white group-hover:fill-edyellow" />
+                    </g>
+                </svg>
+            </button>
+            <a href="contact.html" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">apply now</a>
+        </div>
+    </div>
+
+    <!-- mobile menu button -->
+    <button type="button"
+        class="ed-mobile-menu-open-btn hidden lg:inline-block text-white text-[18px] hover:text-edyellow"><i
+            class="fa-solid fa-bars"></i></button>
+</div>
+</header>
+<!-- HEADER SECTION END -->
+    {% block body %}
+    {% endblock %}
+
+    <!-- FOOTER SECTION START -->
+    <footer
+        class="bg-edblue relative z-[1] before:absolute before:inset-0 before:-z-[1] before:bg-[url('../assets/img/footer-bg.jpg')] before:opacity-[7%] before:bg-no-repeat before:bg-cover before:bg-center text-white">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <!-- footer top -->
+            <div class="flex flex-wrap justify-between gap-[35px] pt-[100px] pb-[58px] border-b border-white/20">
+                <!-- footer about -->
+                <div class="max-w-[370px] xxs:max-w-full">
+                    <a href="index.html" class="inline-block mb-[23px]"><img src="{% static 'img/logo-light.png' %}"
+                            alt="logo"></a>
+                    <p class="text-[#D9D9D9] mb-[19px]">Nullam interdum libero vitae pretium aliquam donec nibh purus
+                        laoreet in ullamcorper vel malesuada sit amet enim.</p>
+
+                    <ul class="space-y-[17px]">
+                        <li class="flex items-center gap-[8px]">
+                            <span class="icon"><img src="{% static 'img/call-icon-yellow.svg' %}" alt="icon"></span>
+                            <a href="tel:+6108-666-0112" class="hover:text-edyellow">+6108-666-0112</a>
+                        </li>
+
+                        <li class="flex items-center gap-[8px]">
+                            <span class="icon"><img src="{% static 'img/message-yellow.svg' %}" alt="icon"></span>
+                            <a href="mailto:info@gmail.com" class="hover:text-edyellow">info@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END -->
+    <!-- js -->
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/fslightbox/fslightbox.js' %}"></script>
+    <script src="{% static 'vendor/mixitup/mixitup.min.js' %}"></script>
+    <script src="{% static 'vendor/slim-select/slimselect.min.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <!-- <script src="assets/js/header-2.js"></script> -->
+    <script src="{% static 'js/accordion.js' %}"></script>
+</body>
+
+</html>

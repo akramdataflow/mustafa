@@ -1,0 +1,529 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+    <div class="ed-overlay group">
+        <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
+    </div>
+
+    <!-- cart -->
+    <div class="ed-cart-bar group">
+        <div class="w-[420px] max-w-full fixed z-[100] right-0 top-0 h-full bg-white flex flex-col translate-x-[100%] duration-[400ms] group-[.active]:translate-x-0">
+            <!-- heading -->
+            <div class="flex items-center justify-between px-[25px] border-b border-edgray/20 pb-[23px] pt-[22px]">
+                <h5 class="text-[20px]">My Cart List</h5>
+                <h6>(03 Items)</h6>
+            </div>
+
+            <!-- cart items -->
+            <div>
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-1.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">Web Development</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-2.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">Digital Marketing</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-3.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">WordPress Development</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+            </div>
+
+            <!-- cart bottom -->
+            <div class="mt-auto px-[25px] mb-[30px]">
+                <div class="flex items-center justify-between font-medium text-[18px] text-edblue mb-[33px]">
+                    <span>Total</span>
+                    <span>$999</span>
+                </div>
+                <div class="space-y-[15px]">
+                    <a href="#" class="ed-btn w-full !rounded-[10px] !bg-transparent border border-edblue !text-edblue hover:!bg-edblue hover:!text-white">Proceed to checkout</a>
+                    <a href="#" class="ed-btn w-full !rounded-[10px]">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- search -->
+    <div class="ed-search group">
+        <form action="#" class="bg-white fixed z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[100px] md:h-[70px] xxs:h-[50px] w-[1224px] max-w-[95%] flex gap-[10px] rounded-full overflow-hidden px-[40px] xxs:px-[20px] pointer-events-none opacity-0 group-[.active]:pointer-events-auto group-[.active]:opacity-100 duration-[400ms]">
+            <input type="search" name="ed-search" placeholder="Search Here..." class="bg-transparent w-full focus:outline-none">
+            <button class="text-[25px] md:text-[22px] xxs:text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+
+    <!-- sidebar -->
+    <div class="ed-sidebar">
+        <div class="translate-x-[100%] transition-transform ease-linear duration-300 fixed right-0 w-full max-w-[25%] xl:max-w-[30%] lg:max-w-[40%] md:max-w-[50%] sm:max-w-[60%] xxs:max-w-full bg-white h-full z-[100] overflow-auto">
+            <!-- heading -->
+            <div class="ed-sidebar-heading p-[20px] lg:p-[20px] border-b border-edgray/20">
+                <div class="logo flex justify-between items-center">
+                    <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+
+                    <button type="button" class="ed-sidebar-close-btn border border-edgray/20 w-[45px] aspect-square shrink-0 text-black text-[22px] rounded-full hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+            <div class="ed-header-nav-in-mobile"></div>
+        </div>
+    </div>
+
+    <main>
+        <!-- BREADCRUMB SECTION START -->
+        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+                <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Course Details</h1>
+                <ul class="flex items-center justify-center gap-[10px] text-white">
+                    <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+                    <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
+                    <li>Course Details</li>
+                </ul>
+            </div>
+
+            <div class="vectors">
+                <img src="{% static 'img/breadcrumb-vector-1.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
+                <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
+            </div>
+        </section>
+        <!-- BREADCRUMB SECTION END -->
+
+
+        <!-- main content -->
+        <div class="py-[120px] xl:py-[80px] md:py-[60px]">
+            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+                <!-- cover -->
+                <div class="rounded-[8px] overflow-hidden relative z-[2] before:absolute before:inset-0 before:-z-[0] before:bg-edpurple/20 mb-[40px] md:mb-[25px] xs:mb-[15px]">
+                    <img src="{% static 'img/course-details-img.jpg' %}" alt="Course Cover" class="rounded-[8px] w-full aspect-[1170/552]">
+
+                    <a href="https://www.youtube.com/watch?v=ht7vYtWOazI&pp=ygUPY291cnNlIG92ZXJ2aWV3" data-fslightbox class="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[75px] xs:w-[65px] xxs:w-[60px] aspect-square bg-white rounded-full flex items-center justify-center text-[28px] text-edpurple hover:text-black before:absolute before:animate-borderFade before:-inset-[12px] before:border before:border-white before:rounded-full after:absolute after:animate-borderFade after:-inset-[5px] after:border after:border-white after:rounded-full"><i class="fa-solid fa-play"></i></a>
+                </div>
+
+                <!-- txt -->
+                <div class="flex gap-[30px] lg:gap-[20px] md:flex-col md:items-center">
+                    {% for course in courses %}
+                    <div class="left max-w-full grow">
+                        <div>
+                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mb-[23px]">{{course.title}}</h4>
+
+                            <!-- course meta -->
+                            <div class="border-b border-[#E5E5E5] pb-[25px] flex xs:flex-wrap items-center gap-[60px] lg:gap-[40px] xs:gap-[20px] mb-[34px]">
+                                <!-- single info -->
+                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                                    <img src="{% static 'img/teacher-2.jpg' %}" alt="Course Instructor" class="w-[52px] aspect-square rounded-full object-cover">
+                                    <div>
+                                        <h6 class="font-medium text-edblue leading-[1.2]">{{course.teacher}}</h6>
+                                        <span class="font-medium text-[14px] text-edgray leading-[1]">Teacher</span>
+                                    </div>
+                                </div>
+
+                                <!-- single info -->
+                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                                    <div>
+                                        <h6 class="font-medium text-edblue leading-[1.2]">Categories</h6>
+                                        <span class="font-medium text-[14px] text-edgray leading-[1]">{{course.category}}</span>
+                                    </div>
+                                </div>
+
+                                <!-- single info -->
+                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                                    <div>
+                                        <h6 class="font-medium text-edblue leading-[1.2]">Reviews</h6>
+                                        <div class="flex gap-[7px] text-[#FFA41B] text-[14px] mt-[6px]">
+                                            <span>{{ average_rating }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- tabs container -->
+                            <div>
+                                <div class="ed-course-details-tabs">
+                                    <!-- tab 01 -->
+                                    <div id="overview" class="ed-tab duration-[400ms] active">
+                                        <div>
+                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">Course Descriptions</h4>
+                                            <div class="space-y-[10px]">
+                                                <p class="text-edgray">{{course.description}}</p>
+                                                </div>
+                                        </div>
+
+                                        <div>
+                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">Requirements for The Course</h4>
+                                            <div class="space-y-[10px]">
+                                                <p class="text-edgray">{{course.requirements}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 02 -->
+                                    <div id="curriculum" class="ed-tab duration-[400ms]">
+                                        <div class="mb-[10px]">
+                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">Course Curriculum</h4>
+                                            <div class="space-y-[10px]">
+                                                <p class="text-edgray">Consectetur adipisicing elit, sed do eiusmod tempor is incididunt ut labore et dolore of magna aliqua. Ut enim ad minim veniam, made of owl the quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea dolor commodo consequat. Duis aute irure and dolor in reprehenderit.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- curriculum #1 -->
+                                        <div class="mt-[32px]">
+                                            <h5 class="font-semibold text-[20px] text-edblue mb-[16px]">Subjects/Courses</h5>
+
+                                            <div class="space-y-[12px]">
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 1: Introduction</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edpurple rounded-[2px] text-white px-[8px] py-[2.5px]">Preview</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/checkmark.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 2: Basic Tool</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">7 Minutes</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 3: Images optimizes</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">18 Minutes</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- curriculum #2 -->
+                                        <div class="mt-[32px]">
+                                            <h5 class="font-semibold text-[20px] text-edblue mb-[16px]">Advanced Topic</h5>
+
+
+                                            <div class="space-y-[12px]">
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 4: Color Selection</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">7 Minutes</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/checkmark.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 5: Typography</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">7 Minutes</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single curriculum -->
+                                                <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
+                                                    <!-- left -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                                        <span class="text-edblue">Lessons 6: Template Design</span>
+                                                    </div>
+
+                                                    <!-- right -->
+                                                    <div class="flex items-center gap-[10px]">
+                                                        <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">18 Minutes</button>
+                                                        <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 03 -->
+                                    <div id="instructor" class="ed-tab duration-[400ms]">
+                                        <div class="flex sm:flex-col items-center md:items-start gap-x-[30px] gap-y-[15px] mt-[40px]">
+                                            <div class="img shrink-0">
+                                                <img src="{% static 'img/teacher-2.jpg' %}" alt="team member image" class="w-[270px] xxs:max-w-full aspect-[74/75] rounded-[12px]">
+                                            </div>
+
+                                            <!-- txt -->
+                                            <div class="txt">
+                                                <h3 class="text-[22px] xxs:text-[20px] font-semibold">Savannah Nguyen</h3>
+                                                <h6 class="text-edgray font-medium text-[16px]">Maths Teacher</h6>
+                                                <p class="font-normal text-[16px] text-edgray mt-[9px]">Adipiscing elit. Mauris viverra nisl quis mollis laoreet. Ut eget lacus a felis accumsan pharetra in dignissim enim. In amet odio mollis urna aliquet volutpat. Sed</p>
+                                                <ul class="infos border-y border-[#E5E5E5] mt-[21px] lg:mt-[18px] mb-[20px] py-[18px] lg:py-[14px] xs:py-[11px] flex flex-wrap gap-x-[40px] xl:gap-x-[20px] gap-y-[10px] text-[16px] text-etBlack">
+                                                    <li class="text-[16px]"><span class="font-medium text-edpurple">Experience:</span> 10 Years</li>
+                                                    <li class="text-[16px]"><span class="font-medium text-edpurple">Position:</span> Maths Teacher</li>
+                                                </ul>
+
+                                                <!-- social links -->
+                                                <div class="flex items-center gap-[16px]">
+                                                    <h6 class="text-edpurple font-medium">Social Media</h6>
+                                                    <div class="flex gap-[20px] text-[16px] text-edpurple">
+                                                        <a href="#" class="hover:text-edblue"><i class="fa-brands fa-facebook-f"></i></a>
+                                                        <a href="#" class="hover:text-edblue"><i class="fa-brands fa-instagram"></i></a>
+                                                        <a href="#" class="hover:text-edblue"><i class="fa-brands fa-linkedin-in"></i></a>
+                                                        <a href="#" class="hover:text-edblue"><i class="fa-brands fa-x-twitter"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- tab 04 -->
+                                    <div id="reviews" class="ed-tab duration-[400ms]">
+                                        <div class="ed-course-details-review mt-[40px]">
+                                            <div class="review-overview flex xxs:flex-col gap-[22px] gap-y-[10px] items-center mb-[42px]">
+                                                <!-- average rating area -->
+                                                <div class="average-rating-area text-center shrink-0">
+                                                    <h3 class="font-medium text-[50px] leading-[0.7] mb-[14px]">4.3</h3>
+                                                    <div class="star text-[#FDA92B] text-[11px]">
+                                                        <i class="fa-solid fa-sharp fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                                    </div>
+                                                    <span class="rating-amount text-edgray text-[13px]">2.33K reviews</span>
+                                                </div>
+
+                                                <!-- review-breakdown by each star  -->
+                                                <div class="review-breakdown grow xxs:w-full">
+                                                    <ul class="individual-star-breakdown flex items-center gap-[15px]">
+                                                        <li class="star w-[11px] shrink-0 font-kanit text-edgray text-[16px]">5</li>
+                                                        <li class="bar bg-[#E8EAED] max-w-full w-full h-[12px] rounded-full relative">
+                                                            <div class="filled bg-[#FDA92B] rounded-[18px] absolute top-0 left-0 h-full w-[80%]"></div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="individual-star-breakdown flex items-center gap-[15px]">
+                                                        <li class="star w-[11px] shrink-0 font-kanit text-edgray text-[16px]">4</li>
+                                                        <li class="bar bg-[#E8EAED] max-w-full w-full h-[12px] rounded-full relative">
+                                                            <div class="filled bg-[#FDA92B] rounded-[18px] absolute top-0 left-0 h-full w-[90%]"></div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="individual-star-breakdown flex items-center gap-[15px]">
+                                                        <li class="star w-[11px] shrink-0 font-kanit text-edgray text-[16px]">3</li>
+                                                        <li class="bar bg-[#E8EAED] max-w-full w-full h-[12px] rounded-full relative">
+                                                            <div class="filled bg-[#FDA92B] rounded-[18px] absolute top-0 left-0 h-full w-[40%]"></div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="individual-star-breakdown flex items-center gap-[15px]">
+                                                        <li class="star w-[11px] shrink-0 font-kanit text-edgray text-[16px]">2</li>
+                                                        <li class="bar bg-[#E8EAED] max-w-full w-full h-[12px] rounded-full relative">
+                                                            <div class="filled bg-[#FDA92B] rounded-[18px] absolute top-0 left-0 h-full w-[30%]"></div>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="individual-star-breakdown flex items-center gap-[15px]">
+                                                        <li class="star w-[11px] shrink-0 font-kanit text-edgray text-[16px]">1</li>
+                                                        <li class="bar bg-[#E8EAED] max-w-full w-full h-[12px] rounded-full relative">
+                                                            <div class="filled bg-[#FDA92B] rounded-[18px] absolute top-0 left-0 h-full w-[5%]"></div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <!-- reviews -->
+                                            <h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] mb-[28px]">Reviews</h4>
+                                            <div class="user-reviews space-y-[30px]">
+                                                <!-- single review -->
+                                                <div class="et-event-details-review flex xxs:flex-col items-start gap-[15px] pb-[30px] border-b border-[#e5e5e5] last:border-none last:pb-0">
+                                                    <div class="user-img rounded-full overflow-hidden w-[60px] h-[60px] shrink-0">
+                                                        <img src="{% static 'img/instructor-2.jpg' %}" alt="user" class="object-cover w-full max-w-full max-h-full">
+                                                    </div>
+
+                                                    <div>
+                                                        <div class="flex items-center justify-between mb-[9px]">
+                                                            <div class="user-info">
+                                                                <h5 class="user-name font-semibold text-[18px] mb-[4px]">Ronald Richards</h5>
+                                                                <h6 class="text-edgray">February 10, 2024 at 2:37 pm</h6>
+                                                            </div>
+
+                                                            <div class="review-rating flex gap-[7px] text-[14px] text-[#FFA41B] shrink-0">
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="review">
+                                                            <p class="text-edgray leading-[1.8]">
+                                                                Aenean blandit justo ac rutrum hendrerit. Vivamus ultrices vulputate ante eget convallis. Donec id ex ut tellus blandit aliquet. Morbi varius
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- single review -->
+                                                <div class="et-event-details-review flex xxs:flex-col items-start gap-[15px] pb-[30px] border-b border-[#e5e5e5] last:border-none last:pb-0">
+                                                    <div class="user-img rounded-full overflow-hidden w-[60px] h-[60px] shrink-0">
+                                                        <img src="{% static 'img/user-2.png' %}" alt="user" class="object-cover w-full max-w-full max-h-full">
+                                                    </div>
+
+                                                    <div>
+                                                        <div class="flex items-center justify-between mb-[9px]">
+                                                            <div class="user-info">
+                                                                <h5 class="user-name font-semibold text-[18px] mb-[4px]">Eliza nolan</h5>
+                                                                <h6 class="text-edgray">February 10, 2024 at 2:37 pm</h6>
+                                                            </div>
+
+                                                            <div class="review-rating flex gap-[7px] text-[14px] text-[#FFA41B] shrink-0">
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                                <i class="fa-solid fa-sharp fa-star"></i>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="review">
+                                                            <p class="text-edgray leading-[1.8]">
+                                                                Aenean blandit justo ac rutrum hendrerit. Vivamus ultrices vulputate ante eget convallis. Donec id ex ut tellus blandit aliquet. Morbi varius
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review Form BLOCK -->
+                            <div class="mt-[50px]">
+                                <h5 class="font-semibold text-[22px] text-edblue mb-[17px]">Write a Review</h5>
+
+                                <!-- إدخال رقم التقييم بين 0 و 5 -->
+                                <input type="number" id="rating-input" min="0" max="5" step="1" placeholder="Rate (0-5)" class="w-full mb-3 p-2 border border-gray-300 rounded" style="margin: 10px;">
+
+                                <button id="submit-review" class="mt-3 bg-edblue text-white px-4 py-2 rounded" style="margin: 10px;">Submit Review</button>
+
+
+                                <form action="#" class="grid grid-cols-2 xxs:grid-cols-1 gap-[30px] xs:gap-[20px] text-[16px]">
+                                    <div>
+                                        <label for="ed-course-review-name" class="font-lato font-semibold text-edblue block mb-[12px]">Your Name*</label>
+                                        <input type="text" name="name" id="ed-course-review-name" placeholder="Your Name" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label for="ed-course-review-email" class="font-lato font-semibold text-edblue block mb-[12px]">Your Email*</label>
+                                        <input type="email" name="email" id="ed-course-review-email" placeholder="Your Email" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
+                                    </div>
+                                    <div class="col-span-2 xxs:col-span-1">
+                                        <label for="ed-course-review-message" class="font-lato font-semibold text-edblue block mb-[12px]">Your Message*</label>
+                                        <textarea name="message" id="ed-course-review-message" placeholder="Your Message" class="border border-[#ECECEC] h-[145px] p-[20px] rounded-[4px] w-full focus:outline-none"></textarea>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="bg-edpurple h-[55px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue">Post Review <span class="icon pl-[10px]"><i class="fa-solid fa-arrow-right-long"></i></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <!-- right sidebar -->
+                    <div class="right h-full sticky top-[120px] max-w-full w-[370px] lg:w-[300px] shrink-0 space-y-[30px]">
+                        <!-- COURSE INFORMATION -->
+                        <div class="border border-[#e5e5e5] rounded-[10px] px-[30px] lg:px-[20px] xxs:px-[15px] py-[35px] lg:py-[25px] xxs:py-[25px]">
+                            <h5 class="font-semibold text-[24px] text-edblue mb-[20px]">Course includes:</h5>
+
+                            <ul class="mb-[30px]">
+                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
+                                        <span class="icon"><img src="{% static 'img/icon/calender-purple.svg' %}" alt="icon"></span>
+                                        <span>Level:</span>
+                                    </span>
+                                    <span class="text-[15px] text-edgray">{{course.level}}</span>
+                                </li>
+
+                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
+                                        <span class="icon"><img src="{% static 'img/icon/clock-purple.svg' %}" alt="icon"></span>
+                                        <span>Duration:</span>
+                                    </span>
+                                    <span class="text-[15px] text-edgray">{{course.created_at|date:"Y-m-d" }}</span>
+                                </li>
+
+                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
+                                        <span class="icon"><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
+                                        <span>Lessons:</span>
+                                    </span>
+                                    <span class="text-[15px] text-edgray">{{course.lessons_count}}</span>
+                                </li>
+
+                                <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                    <span class="flex items-center gap-[8px] font-semibold text-edblue">
+                                        <span class="icon"><img src="{% static 'img/icon/user-group-purple.svg' %}" alt="icon"></span>
+                                        <span>Students:</span>
+                                    </span>
+                                    <span class="text-[15px] text-edgray">{{ num_enrollments }}</span>
+                                </li>
+                            </ul>
+
+                            <div class="space-y-[12px]">
+                                <button class="ed-btn !h-[56px] !rounded-[8px] w-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">Add to cart</button>
+                                <a href="#" class="ed-btn gap-[10px] !h-[56px] !rounded-[8px] w-full">Join this Course <span><i class="fa-solid fa-arrow-right-long"></i></span></a>
+                            </div>
+
+                            <!-- social links -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock %}
+
+   

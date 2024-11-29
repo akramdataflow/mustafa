@@ -1,0 +1,184 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+    <div class="ed-overlay group">
+        <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
+    </div>
+
+    <!-- cart -->
+    <div class="ed-cart-bar group">
+        <div class="w-[420px] max-w-full fixed z-[100] right-0 top-0 h-full bg-white flex flex-col translate-x-[100%] duration-[400ms] group-[.active]:translate-x-0">
+            <!-- heading -->
+            <div class="flex items-center justify-between px-[25px] border-b border-edgray/20 pb-[23px] pt-[22px]">
+                <h5 class="text-[20px]">My Cart List</h5>
+                <h6>(03 Items)</h6>
+            </div>
+
+            <!-- cart items -->
+            <div>
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-1.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">Web Development</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-2.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">Digital Marketing</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+
+                <!-- single cart item -->
+                <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
+                    <img src="{% static 'img/cart-item-3.jpg' %}" alt="Cart Item Image" class="rounded-[10px] shrink-0">
+                    <div class="grow">
+                        <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">WordPress Development</a></h6>
+                        <h6 class="font-medium text-edgray">$15.00</h6>
+                    </div>
+                    <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                </div>
+            </div>
+
+            <!-- cart bottom -->
+            <div class="mt-auto px-[25px] mb-[30px]">
+                <div class="flex items-center justify-between font-medium text-[18px] text-edblue mb-[33px]">
+                    <span>Total</span>
+                    <span>$999</span>
+                </div>
+                <div class="space-y-[15px]">
+                    <a href="#" class="ed-btn w-full !rounded-[10px] !bg-transparent border border-edblue !text-edblue hover:!bg-edblue hover:!text-white">Proceed to checkout</a>
+                    <a href="#" class="ed-btn w-full !rounded-[10px]">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- search -->
+    <div class="ed-search group">
+        <form action="#" class="bg-white fixed z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[100px] md:h-[70px] xxs:h-[50px] w-[1224px] max-w-[95%] flex gap-[10px] rounded-full overflow-hidden px-[40px] xxs:px-[20px] pointer-events-none opacity-0 group-[.active]:pointer-events-auto group-[.active]:opacity-100 duration-[400ms]">
+            <input type="search" name="ed-search" placeholder="Search Here..." class="bg-transparent w-full focus:outline-none">
+            <button class="text-[25px] md:text-[22px] xxs:text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+
+    <!-- sidebar -->
+    <div class="ed-sidebar">
+        <div class="translate-x-[100%] transition-transform ease-linear duration-300 fixed right-0 w-full max-w-[25%] xl:max-w-[30%] lg:max-w-[40%] md:max-w-[50%] sm:max-w-[60%] xxs:max-w-full bg-white h-full z-[100] overflow-auto">
+            <!-- heading -->
+            <div class="ed-sidebar-heading p-[20px] lg:p-[20px] border-b border-edgray/20">
+                <div class="logo flex justify-between items-center">
+                    <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+
+                    <button type="button" class="ed-sidebar-close-btn border border-edgray/20 w-[45px] aspect-square shrink-0 text-black text-[22px] rounded-full hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <!-- mobile menu -->
+            <div class="ed-header-nav-in-mobile"></div>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- BREADCRUMB SECTION START -->
+        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+                <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Course Grid</h1>
+                <ul class="flex items-center justify-center gap-[10px] text-white">
+                    <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+                    <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
+                    <li>Courses</li>
+                </ul>
+            </div>
+
+            <div class="vectors">
+                <img src="{% static 'img/breadcrumb-vector-1.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
+                <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
+            </div>
+        </section>
+        <!-- BREADCRUMB SECTION END -->
+
+
+        <!-- COURSE GRID SECTION START -->
+        <div class="py-[120px] xl:py-[80px] md:py-[60px]">
+            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+                <div class="grid grid-cols-3 md:grid-cols-2 xxs:grid-cols-1 gap-[30px] lg:gap-[20px]">
+                    {% for course in courses %}
+                    <!-- single course card -->
+                    <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
+                        <!-- course image  -->
+                        <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
+                            <img src="{% static 'img/course-1.jpg' %}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                            <span class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
+                                <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
+                                <span class="txt">8h 30m</span>
+                            </span>
+                        </div>
+
+                        <!-- course infos -->
+                        <div class="flex justify-between items-center mb-[16px]">
+                            <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">Expert</span>
+                            <span class="text-edpurple font-semibold text-[20px]">$59.00</span>
+                        </div>
+
+                        <!-- course title -->
+                        <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.id %}" class="hover:text-edpurple">{{ course.title }}</a></h5>
+
+                        <!-- course stats -->
+                        <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
+                            <div class="flex items-center gap-[8px] text-[14px] text-edgray">
+                                <span class="icon"><img src="{% static 'img/icon/user-group.svg' %}" alt="icon"></span>
+                                <span class="txt">169 Students</span>
+                            </div>
+
+                            <div class="flex items-center gap-[8px] text-[14px] text-edgray">
+                                <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
+                                <span class="txt">12 Lesson</span>
+                            </div>
+                        </div>
+
+                        <!-- course footer -->
+                        <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
+                            <!-- course author -->
+                            <div class="flex items-center gap-[8px]">
+                                <img src="{% static 'img/user.png' %}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
+                                <a href="teacher-details.html" class="hover:text-edpurple">Jane Cooper</a>
+                            </div>
+
+                            <!-- course rating -->
+                            <div class="flex gap-[6px]">
+                                <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
+                                <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
+                                <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
+                                <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
+                                <span class="text-[#808080]"><i class="fa-solid fa-star"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- pagination -->
+                <div class="flex items-center gap-[20px] pt-[60px] justify-center text-[16px]">
+                    <a href="#" class="hover:text-edpurple"><i class="fa-solid fa-arrow-left-long"></i></a>
+                    <div class="ed-pagination flex gap-[10px] items-center">
+                        <a href="#" class="border border-[#d9d9d9] rounded-full w-[50px] h-[50px] flex items-center justify-center text-etBlack hover:bg-edpurple hover:border-edpurple hover:text-white active">01</a>
+                        <a href="#" class="border border-[#d9d9d9] rounded-full w-[50px] h-[50px] flex items-center justify-center text-etBlack hover:bg-edpurple hover:border-edpurple hover:text-white">02</a>
+                        <a href="#" class="border border-[#d9d9d9] rounded-full w-[50px] h-[50px] flex items-center justify-center text-etBlack hover:bg-edpurple hover:border-edpurple hover:text-white">03</a>
+                    </div>
+                    <a href="#" class="hover:text-edpurple"><i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- COURSE GRID SECTION END -->
+    </main>
+
+    {% endblock %}

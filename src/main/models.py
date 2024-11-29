@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 from django.db import models
 
 # نموذج الأنواع
@@ -15,11 +14,24 @@ class Type(models.Model):
 
 # نموذج الكورس
 class Course(models.Model):
+    BEGINNER = 'Beginner'
+    INTERMEDIATE = 'Intermediate'
+    ADVANCED = 'Advanced'
+    EXPERT = 'All Level'  # خيار جديد للمستوى المتقدم جدًا
+    LEVEL_CHOICES = [
+        (BEGINNER, 'Beginner'),
+        (INTERMEDIATE, 'Intermediate'),
+        (ADVANCED, 'Advanced'),
+        (EXPERT, 'All Level'),  # الخيار الجديد
+    ]
     title = models.CharField(max_length=200)
     description = models.TextField()
+    requirements = models.TextField()
     category = models.ForeignKey(Type, on_delete=models.SET_NULL, null=True, related_name='courses')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses')  # ربط مع المستخدمين
+    level = models.CharField(max_length=20,choices=LEVEL_CHOICES,default=BEGINNER)  # القيمة الافتراضية للمستوى
+    lessons_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
