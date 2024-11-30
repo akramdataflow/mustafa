@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block body %}
+
     <div class="ed-overlay group">
         <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
     </div>
@@ -88,7 +89,7 @@
 
     <main>
         <!-- BREADCRUMB SECTION START -->
-        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none" style="background-image: url('{% static "img/breadcrumb-bg.jpg" %}');">
             <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
                 <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Course Details</h1>
                 <ul class="flex items-center justify-center gap-[10px] text-white">
@@ -151,6 +152,16 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                                    <div>
+                                        <h6 class="font-medium text-edblue leading-[1.2]">Price</h6>
+                                        <div class="flex gap-[7px] text-[#FFA41B] text-[14px] mt-[6px]">
+                                            <span>{{ course.price }} $</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- tabs container -->
@@ -506,5 +517,3 @@
         </div>
     </main>
     {% endblock %}
-
-   

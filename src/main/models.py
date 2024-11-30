@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 from django.db import models
 
+
+
+
 # نموذج الأنواع
 class Type(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -10,6 +13,11 @@ class Type(models.Model):
 
     def __str__(self):
         return self.name
+
+
+def image_upload(instance, filename):
+    imagename, extension = filename.split('.')
+    return "courses/%s.%s" % (instance.id, extension)
 
 
 # نموذج الكورس
@@ -32,6 +40,7 @@ class Course(models.Model):
     teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses')  # ربط مع المستخدمين
     level = models.CharField(max_length=20,choices=LEVEL_CHOICES,default=BEGINNER)  # القيمة الافتراضية للمستوى
     lessons_count = models.IntegerField(default=0)
+    image = models.ImageField(upload_to=image_upload)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

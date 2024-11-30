@@ -1,6 +1,8 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block body %}
+
+
 <div class="ed-overlay group">
     <div
         class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto">
@@ -188,7 +190,7 @@
                 <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
                     <!-- course image  -->
                     <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
-                        <img src="{% static 'img/course-1.jpg' %}" alt="Course Image"
+                        <img src="{{ course.image.url }}" alt="Course Image"
                             class="aspect-[330/223] w-full object-cover group-hover:scale-110">
                         <span
                             class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
@@ -208,38 +210,9 @@
                     <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.id %}"
                             class="hover:text-edpurple">{{course.title}}</a></h5>
 
-                    <!-- course stats -->
-                    <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
-                        <div class="flex items-center gap-[8px] text-[14px] text-edgray">
-                            <span class="icon"><img src="{% static 'img/icon/user-group.svg' %}" alt="icon"></span>
-                            <span class="txt">169 Students</span>
-                        </div>
+                    
 
-                        <div class="flex items-center gap-[8px] text-[14px] text-edgray">
-                            <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
-                            <span class="txt">12 Lesson</span>
-                        </div>
-                    </div>
-
-                    <!-- course footer -->
-                    <div
-                        class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
-                        <!-- course author -->
-                        <div class="flex items-center gap-[8px]">
-                            <img src="{% static 'img/user.png' %}" alt="Course Author Image"
-                                class="w-[34px] aspect-square object-cover">
-                            <a href="teacher-details.html" class="hover:text-edpurple">mortaza</a>
-                        </div>
-
-                        <!-- course rating -->
-                        <div class="flex gap-[6px]">
-                            <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[#F8CB1E]"><i class="fa-solid fa-star"></i></span>
-                            <span class="text-[#808080]"><i class="fa-solid fa-star"></i></span>
-                        </div>
-                    </div>
+                
                 </div>
                 {% endfor %}
             </div>
@@ -979,7 +952,8 @@
     <!-- CTA 2 SECTION START -->
     <section class="mt-[120px] xl:mt-[80px] md:mt-[60px]">
         <div
-            class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px] bg-[url('../assets/img/cta-3-bg.jpg')] bg-no-repeat bg-cover bg-center rounded-[20px] overflow-hidden text-center py-[120px] xl:py-[80px] md:py-[60px] relative z-[1] before:absolute before:inset-0 before:bg-edpurple/80 before:-z-[1]">
+            style="background-image: url('{% static "img/cta-3-bg.jpg" %}');"
+            class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px] bg-no-repeat bg-cover bg-center rounded-[20px] overflow-hidden text-center py-[120px] xl:py-[80px] md:py-[60px] relative z-[1] before:absolute before:inset-0 before:bg-edpurple/80 before:-z-[1]">
             <div class="max-w-[570px] mx-auto">
                 <h6 class="ed-section-sub-title ed-section-sub-title--white mr-[48px]">Online Class</h6>
                 <h2 class="ed-section-title !text-white mb-[18px]">Expert Instructor Live Classes Here!</h2>
