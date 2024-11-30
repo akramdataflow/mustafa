@@ -210,6 +210,16 @@
                     <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.id %}"
                             class="hover:text-edpurple">{{course.title}}</a></h5>
 
+                            <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
+                                <!-- course author -->
+                                <div class="flex items-center gap-[8px]">
+                                    <img src="{{ course.teacher.image.url }}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
+                                    <a href="teacher-details.html" class="hover:text-edpurple">{{course.teacher}}</a>
+                                </div>
+    
+                            
+                            </div>
+
                     
 
                 

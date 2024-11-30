@@ -20,5 +20,5 @@ def course_details(request,id):
     courses = Course.objects.filter(title=course)
     average_rating = Review.objects.filter(course=course).aggregate(Avg('rating'))['rating__avg']
     num_enrollments = Enrollment.objects.filter(course=course).count()
-    context = {'courses':courses, 'course':course, 'average_rating': average_rating, 'num_enrollments':num_enrollments}
+    context = {'courses':courses, 'course':course, 'average_rating': average_rating, 'num_enrollments':num_enrollments, 'teacher': course.teacher}
     return render(request, 'course-details.html', context)

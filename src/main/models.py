@@ -13,6 +13,16 @@ class Type(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Profile(models.Model):
+    user_name = models.CharField(max_length=200, unique=True)
+    email = models.EmailField(max_length=254)
+    description = models.TextField()
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.user_name
+
 
 
 def image_upload(instance, filename):
@@ -37,7 +47,7 @@ class Course(models.Model):
     requirements = models.TextField()
     category = models.ForeignKey(Type, on_delete=models.SET_NULL, null=True, related_name='courses')
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    teacher = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses')  # ربط مع المستخدمين
+    teacher = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='courses')  # ربط مع المستخدمين
     level = models.CharField(max_length=20,choices=LEVEL_CHOICES,default=BEGINNER)  # القيمة الافتراضية للمستوى
     lessons_count = models.IntegerField(default=0)
     image = models.ImageField(upload_to=image_upload)
@@ -58,7 +68,7 @@ class CourseContent(models.Model):
 
 # نموذج الاشتراكات
 class Enrollment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='enrollments')  # ربط مع المستخدمين
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='enrollments')  # ربط مع المستخدمين
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')
     enrolled_at = models.DateTimeField(auto_now_add=True)
 
@@ -67,7 +77,7 @@ class Enrollment(models.Model):
 
 # نموذج المراجعات
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')  # ربط مع المستخدمين
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='reviews')  # ربط مع المستخدمين
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='reviews')
     rating = models.PositiveIntegerField()
     comment = models.TextField(blank=True, null=True)

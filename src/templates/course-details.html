@@ -89,7 +89,7 @@
 
     <main>
         <!-- BREADCRUMB SECTION START -->
-        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none" style="background-image: url('{% static "img/breadcrumb-bg.jpg" %}');">
+        <section style="background-image: url('{{ course.image.url }}');"  class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
             <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
                 <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Course Details</h1>
                 <ul class="flex items-center justify-center gap-[10px] text-white">
@@ -112,9 +112,12 @@
             <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
                 <!-- cover -->
                 <div class="rounded-[8px] overflow-hidden relative z-[2] before:absolute before:inset-0 before:-z-[0] before:bg-edpurple/20 mb-[40px] md:mb-[25px] xs:mb-[15px]">
-                    <img src="{% static 'img/course-details-img.jpg' %}" alt="Course Cover" class="rounded-[8px] w-full aspect-[1170/552]">
+                    
+                    <video width="1170" height="552" controls>
+                        <source src="{% static 'video.mp4' %}" type="video/mp4">
+                      </video>
 
-                    <a href="https://www.youtube.com/watch?v=ht7vYtWOazI&pp=ygUPY291cnNlIG92ZXJ2aWV3" data-fslightbox class="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[75px] xs:w-[65px] xxs:w-[60px] aspect-square bg-white rounded-full flex items-center justify-center text-[28px] text-edpurple hover:text-black before:absolute before:animate-borderFade before:-inset-[12px] before:border before:border-white before:rounded-full after:absolute after:animate-borderFade after:-inset-[5px] after:border after:border-white after:rounded-full"><i class="fa-solid fa-play"></i></a>
+                    
                 </div>
 
                 <!-- txt -->
@@ -128,7 +131,7 @@
                             <div class="border-b border-[#E5E5E5] pb-[25px] flex xs:flex-wrap items-center gap-[60px] lg:gap-[40px] xs:gap-[20px] mb-[34px]">
                                 <!-- single info -->
                                 <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
-                                    <img src="{% static 'img/teacher-2.jpg' %}" alt="Course Instructor" class="w-[52px] aspect-square rounded-full object-cover">
+                                    <img src="{{ teacher.image.url }}" alt="Course Instructor" class="w-[52px] aspect-square rounded-full object-cover">
                                     <div>
                                         <h6 class="font-medium text-edblue leading-[1.2]">{{course.teacher}}</h6>
                                         <span class="font-medium text-[14px] text-edgray leading-[1]">Teacher</span>
