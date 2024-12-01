@@ -1,0 +1,329 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+<main>
+    <!-- BREADCRUMB SECTION START -->
+    <section
+        class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Teacher Details</h1>
+            <ul class="flex items-center justify-center gap-[10px] text-white">
+                <li><a href="index.html" class="text-edyellow">Home</a></li>
+                <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
+                <li>Teacher Details</li>
+            </ul>
+        </div>
+
+        <div class="vectors">
+            <img src="assets/img/breadcrumb-vector-1.svg" alt="vector"
+                class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
+            <img src="assets/img/breadcrumb-vector-2.svg" alt="vector"
+                class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
+        </div>
+    </section>
+    <!-- BREADCRUMB SECTION END -->
+
+
+    <!-- TEAM MEMBER DETAILS SECTION START -->
+    <div class="py-[130px] xl:py-[80px] md:py-[60px]">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <div
+                class="flex md:flex-col items-center md:items-start gap-x-[30px] gap-y-[15px] border border-[#E5E5E5] rounded-[12px] p-[30px] xs:p-[20px] xxs:p-[15px]">
+                <div class="img shrink-0">
+                    <img src="assets/img/teacher-2.jpg" alt="team member image"
+                        class="w-[370px] xxs:max-w-full aspect-[74/75] rounded-[12px]">
+                </div>
+
+                <!-- txt -->
+                <div class="txt">
+                    <h3 class="text-[30px] xxs:text-[25px] font-semibold mb-[6px]">Savannah Nguyen</h3>
+                    <h6 class="text-edgray font-medium text-[16px]">Maths Teacher</h6>
+                    <p class="font-normal text-[16px] text-edgray mt-[16px]">Adipiscing elit. Mauris viverra nisl quis
+                        mollis laoreet. Ut eget lacus a felis accumsan pharetra in dignissim enim. In amet odio mollis
+                        urna aliquet volutpat. Sed bibendum nisl vehicula imperdiet imperdiet, augue massa fringilla.
+                    </p>
+                    <ul
+                        class="infos border-y border-[#E5E5E5] mt-[31px] lg:mt-[18px] mb-[36px] lg:mb-[26px] py-[24px] lg:py-[14px] xs:py-[11px] flex flex-wrap gap-x-[40px] gap-y-[15px] xs:gap-y-[10px] text-[16px] text-etBlack">
+                        <li class="text-[16px]"><span class="font-medium text-edpurple">Experience:</span> 10 Years</li>
+                        <li class="text-[16px]"><span class="font-medium text-edpurple">Position:</span> Maths Teacher
+                        </li>
+                        <li class="text-[16px]"> <span class="font-medium text-edpurple">Phone:</span> +208-555-0112
+                        </li>
+                    </ul>
+
+                    <!-- social links -->
+                    <div class="flex items-center gap-[16px]">
+                        <h6 class="text-edpurple font-medium">Social Media</h6>
+                        <div class="flex gap-[20px] text-[16px] text-edpurple">
+                            <a href="#" class="hover:text-edblue"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="hover:text-edblue"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="hover:text-edblue"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="hover:text-edblue"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- professional info -->
+            <div
+                class="flex md:flex-col items-center gap-y-[30px] gap-x-[105px] xl:gap-x-[65px] lg:gap-x-[45px] mt-[61px] lg:mt-[51px] sm:mt-[41px] xxs:mt-[31px]">
+                <!-- left -->
+                <div>
+                    <h5 class="text-[24px] font-semibold text-edblue mb-[12px]">Professional Info</h5>
+                    <p class="text-edgray mb-[13px]">Consectetur adipisicing elit, sed do eiusmod tempor is incididunt
+                        ut labore et dolore of magna aliqua. Ut enim ad minim veniam, made of owl the quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip</p>
+                    <p class="text-edgray">The is ipsum dolor sit amet consectetur adipiscing elit. Fusce eleifend porta
+                        arcu In hac augu ehabitasse the is platea augue thelorem </p>
+                </div>
+
+                <!-- right -->
+                <div class="space-y-[38px] max-w-[50%] sm:max-w-full">
+                    <!-- single progress bar -->
+                    <div>
+                        <h6 class="mb-[6px]">Physical Therapy</h6>
+                        <div class="bg-[#F3F7FB] w-[510px] max-w-full h-[10px] relative">
+                            <div class="ed-progressbar bg-edpurple duration-[400ms] h-full relative" data-value="86">
+                                <div class="ed-progress-label absolute bg-edpurple text-white text-[12px] font-medium px-[8px] pt-[4px] pb-[10px] bottom-[calc(100%+6px)] right-0"
+                                    style="clip-path: polygon( 100% 0%,0% 0%,0% 80%,80% 80%,100% 100%,100% 80%,100% 0% );">
+                                    95%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- single progress bar -->
+                    <div>
+                        <h6 class="mb-[6px]">Rehabilitation</h6>
+                        <div class="bg-[#F3F7FB] w-[510px] max-w-full h-[10px] relative">
+                            <div class="ed-progressbar bg-edpurple duration-[400ms] h-full relative" data-value="92">
+                                <div class="ed-progress-label absolute bg-edpurple text-white text-[12px] font-medium px-[8px] pt-[4px] pb-[10px] bottom-[calc(100%+6px)] right-0"
+                                    style="clip-path: polygon( 100% 0%,0% 0%,0% 80%,80% 80%,100% 100%,100% 80%,100% 0% );">
+                                    95%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- single progress bar -->
+                    <div>
+                        <h6 class="mb-[6px]">Sport Injuries</h6>
+                        <div class="bg-[#F3F7FB] w-[510px] max-w-full h-[10px] relative">
+                            <div class="ed-progressbar bg-edpurple duration-[400ms] h-full relative" data-value="62">
+                                <div class="ed-progress-label absolute bg-edpurple text-white text-[12px] font-medium px-[8px] pt-[4px] pb-[10px] bottom-[calc(100%+6px)] right-0"
+                                    style="clip-path: polygon( 100% 0%,0% 0%,0% 80%,80% 80%,100% 100%,100% 80%,100% 0% );">
+                                    95%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TEAM MEMBER DETAILS SECTION START -->
+
+
+    <!-- TEACHER SECTION START -->
+    <section class="pb-[120px] xl:pb-[80px] md:pb-[60px] relative z-[1]">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <!-- heading -->
+            <div
+                class="flex flex-wrap xs:flex-col xs:text-center justify-between items-end xs:items-center gap-y-[15px] pb-[26px] border-b border-[#002147]/15 mb-[46px] md:mb-[30px]">
+                <div>
+                    <h6 class="ed-section-sub-title">Our Expert</h6>
+                    <h2 class="ed-section-title">Other Teachers</h2>
+                </div>
+
+                <div
+                    class="ed-teachers-slider-nav flex gap-[15px] *:w-[40px] *:h-[40px] *:rounded-full *:border *:border-[#808080]/20 *:text-black *:text-[20px]">
+                    <button class="prev hover:bg-edpurple hover:border-edpurple hover:text-white"><i
+                            class="fa-solid fa-angle-left"></i></button>
+                    <button class="next hover:bg-edpurple hover:border-edpurple hover:text-white"><i
+                            class="fa-solid fa-angle-right"></i></button>
+                </div>
+            </div>
+
+            <!-- slider -->
+            <div class="ed-teachers-slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- single teacher -->
+                    <div class="swiper-slide">
+                        <div class="ed-teacher group">
+                            <div class="ed-teacher__img rounded-[16px] overflow-hidden">
+                                <img src="assets/img/teacher-1.jpg" alt="Team Member Image"
+                                    class="w-full aspect-[370/375] duration-[400ms] group-hover:scale-110">
+                            </div>
+
+                            <div
+                                class="ed-teacher__txt bg-white relative z-[1] mx-[25px] lg:mx-[20px] md:mx-[15px] xs:mx-[5px] -mt-[44px] md:-mt-[15px] xs:mt-0 rounded-[16px] shadow-[0_4px_60px_rgba(18,96,254,0.12)] px-[25px] xl:px-[20px] md:px-[15px] pb-[30px] lg:pb-[25px] md:pb-[20px] before:w-full before:absolute before:-z-[1] before:h-full before:bg-white before:left-0 before:rounded-[16px] before:-top-[33px] before:skew-y-[4deg]">
+                                <div class="ed-teacher-socials absolute right-[20px] -top-[43px]">
+                                    <div
+                                        class="ed-speaker__socials flex flex-col gap-[8px] absolute -z-[2] text-[14px] opacity-0 transition duration-[400ms] bottom-[calc(100%+8px)] translate-y-[100%] group-hover:translate-y-0 group-hover:opacity-100">
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                    </div>
+                                    <div
+                                        class="ed-teacher-socials__icon bg-edpurple w-[36px] aspect-square rounded-full bg-etBlue flex items-center justify-center">
+                                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.89361 9.41703C9.22284 9.41703 8.61849 9.70668 8.19906 10.1675L4.42637 7.83088C4.52995 7.56611 4.58305 7.28429 4.58294 6.99999C4.58307 6.71568 4.52997 6.43386 4.42637 6.16909L8.19906 3.83238C8.61851 4.29318 9.22284 4.58297 9.89361 4.58297C11.1572 4.58297 12.1851 3.55501 12.1851 2.29143C12.1851 1.02785 11.1572 0 9.89361 0C8.63005 0 7.60209 1.02796 7.60209 2.29154C7.60204 2.57583 7.65514 2.85763 7.75866 3.1224L3.98608 5.45903C3.56663 4.99824 2.96231 4.70845 2.29154 4.70845C1.02796 4.70845 0 5.73652 0 6.99999C0 8.26354 1.02796 9.29152 2.29154 9.29152C2.96228 9.29152 3.56666 9.00185 3.98608 8.54094L7.75869 10.8776C7.65515 11.1424 7.60204 11.4242 7.60209 11.7085C7.60209 12.972 8.63003 14 9.89361 14C11.1572 14 12.1851 12.972 12.1851 11.7086C12.1851 10.445 11.1572 9.41703 9.89361 9.41703ZM8.43766 2.29154C8.43766 1.48873 9.09082 0.835596 9.89361 0.835596C10.6964 0.835596 11.3495 1.48873 11.3495 2.29154C11.3495 3.09435 10.6964 3.74748 9.89361 3.74748C9.09079 3.74748 8.43766 3.09432 8.43766 2.29154ZM2.29154 8.45593C1.48862 8.45593 0.835487 7.80277 0.835487 6.99999C0.835487 6.1972 1.48862 5.54404 2.29154 5.54404C3.09435 5.54404 3.74737 6.1972 3.74737 6.99999C3.74737 7.80277 3.09432 8.45593 2.29154 8.45593ZM8.43766 11.7085C8.43766 10.9057 9.09082 10.2525 9.89361 10.2525C10.6964 10.2525 11.3495 10.9057 11.3495 11.7084C11.3495 12.5112 10.6964 13.1644 9.89361 13.1644C9.09079 13.1644 8.43766 12.5112 8.43766 11.7084V11.7085Z"
+                                                fill="white"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h5 class="font-semibold text-[20px] text-etBlack mb-[4px]"><a
+                                        href="teacher-details.html" class="hover:text-etBlue">Cameron Williamson</a>
+                                </h5>
+                                <span class="text-etGray text-[16px]">President of Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- single teacher -->
+                    <div class="swiper-slide">
+                        <div class="ed-teacher group">
+                            <div class="ed-teacher__img rounded-[16px] overflow-hidden">
+                                <img src="assets/img/teacher-2.jpg" alt="Team Member Image"
+                                    class="w-full aspect-[370/375] duration-[400ms] group-hover:scale-110">
+                            </div>
+
+                            <div
+                                class="ed-teacher__txt bg-white relative z-[1] mx-[25px] lg:mx-[20px] md:mx-[15px] xs:mx-[5px] -mt-[44px] md:-mt-[15px] xs:mt-0 rounded-[16px] shadow-[0_4px_60px_rgba(18,96,254,0.12)] px-[25px] xl:px-[20px] md:px-[15px] pb-[30px] lg:pb-[25px] md:pb-[20px] before:w-full before:absolute before:-z-[1] before:h-full before:bg-white before:left-0 before:rounded-[16px] before:-top-[33px] before:skew-y-[4deg]">
+                                <div class="ed-teacher-socials absolute right-[20px] -top-[43px]">
+                                    <div
+                                        class="ed-speaker__socials flex flex-col gap-[8px] absolute -z-[2] text-[14px] opacity-0 transition duration-[400ms] bottom-[calc(100%+8px)] translate-y-[100%] group-hover:translate-y-0 group-hover:opacity-100">
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                    </div>
+                                    <div
+                                        class="ed-teacher-socials__icon bg-edpurple w-[36px] aspect-square rounded-full bg-etBlue flex items-center justify-center">
+                                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.89361 9.41703C9.22284 9.41703 8.61849 9.70668 8.19906 10.1675L4.42637 7.83088C4.52995 7.56611 4.58305 7.28429 4.58294 6.99999C4.58307 6.71568 4.52997 6.43386 4.42637 6.16909L8.19906 3.83238C8.61851 4.29318 9.22284 4.58297 9.89361 4.58297C11.1572 4.58297 12.1851 3.55501 12.1851 2.29143C12.1851 1.02785 11.1572 0 9.89361 0C8.63005 0 7.60209 1.02796 7.60209 2.29154C7.60204 2.57583 7.65514 2.85763 7.75866 3.1224L3.98608 5.45903C3.56663 4.99824 2.96231 4.70845 2.29154 4.70845C1.02796 4.70845 0 5.73652 0 6.99999C0 8.26354 1.02796 9.29152 2.29154 9.29152C2.96228 9.29152 3.56666 9.00185 3.98608 8.54094L7.75869 10.8776C7.65515 11.1424 7.60204 11.4242 7.60209 11.7085C7.60209 12.972 8.63003 14 9.89361 14C11.1572 14 12.1851 12.972 12.1851 11.7086C12.1851 10.445 11.1572 9.41703 9.89361 9.41703ZM8.43766 2.29154C8.43766 1.48873 9.09082 0.835596 9.89361 0.835596C10.6964 0.835596 11.3495 1.48873 11.3495 2.29154C11.3495 3.09435 10.6964 3.74748 9.89361 3.74748C9.09079 3.74748 8.43766 3.09432 8.43766 2.29154ZM2.29154 8.45593C1.48862 8.45593 0.835487 7.80277 0.835487 6.99999C0.835487 6.1972 1.48862 5.54404 2.29154 5.54404C3.09435 5.54404 3.74737 6.1972 3.74737 6.99999C3.74737 7.80277 3.09432 8.45593 2.29154 8.45593ZM8.43766 11.7085C8.43766 10.9057 9.09082 10.2525 9.89361 10.2525C10.6964 10.2525 11.3495 10.9057 11.3495 11.7084C11.3495 12.5112 10.6964 13.1644 9.89361 13.1644C9.09079 13.1644 8.43766 12.5112 8.43766 11.7084V11.7085Z"
+                                                fill="white"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h5 class="font-semibold text-[20px] text-etBlack mb-[4px]"><a
+                                        href="teacher-details.html" class="hover:text-etBlue">Cameron Williamson</a>
+                                </h5>
+                                <span class="text-etGray text-[16px]">President of Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- single teacher -->
+                    <div class="swiper-slide">
+                        <div class="ed-teacher group">
+                            <div class="ed-teacher__img rounded-[16px] overflow-hidden">
+                                <img src="assets/img/teacher-3.jpg" alt="Team Member Image"
+                                    class="w-full aspect-[370/375] duration-[400ms] group-hover:scale-110">
+                            </div>
+
+                            <div
+                                class="ed-teacher__txt bg-white relative z-[1] mx-[25px] lg:mx-[20px] md:mx-[15px] xs:mx-[5px] -mt-[44px] md:-mt-[15px] xs:mt-0 rounded-[16px] shadow-[0_4px_60px_rgba(18,96,254,0.12)] px-[25px] xl:px-[20px] md:px-[15px] pb-[30px] lg:pb-[25px] md:pb-[20px] before:w-full before:absolute before:-z-[1] before:h-full before:bg-white before:left-0 before:rounded-[16px] before:-top-[33px] before:skew-y-[4deg]">
+                                <div class="ed-teacher-socials absolute right-[20px] -top-[43px]">
+                                    <div
+                                        class="ed-speaker__socials flex flex-col gap-[8px] absolute -z-[2] text-[14px] opacity-0 transition duration-[400ms] bottom-[calc(100%+8px)] translate-y-[100%] group-hover:translate-y-0 group-hover:opacity-100">
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                    </div>
+                                    <div
+                                        class="ed-teacher-socials__icon bg-edpurple w-[36px] aspect-square rounded-full bg-etBlue flex items-center justify-center">
+                                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.89361 9.41703C9.22284 9.41703 8.61849 9.70668 8.19906 10.1675L4.42637 7.83088C4.52995 7.56611 4.58305 7.28429 4.58294 6.99999C4.58307 6.71568 4.52997 6.43386 4.42637 6.16909L8.19906 3.83238C8.61851 4.29318 9.22284 4.58297 9.89361 4.58297C11.1572 4.58297 12.1851 3.55501 12.1851 2.29143C12.1851 1.02785 11.1572 0 9.89361 0C8.63005 0 7.60209 1.02796 7.60209 2.29154C7.60204 2.57583 7.65514 2.85763 7.75866 3.1224L3.98608 5.45903C3.56663 4.99824 2.96231 4.70845 2.29154 4.70845C1.02796 4.70845 0 5.73652 0 6.99999C0 8.26354 1.02796 9.29152 2.29154 9.29152C2.96228 9.29152 3.56666 9.00185 3.98608 8.54094L7.75869 10.8776C7.65515 11.1424 7.60204 11.4242 7.60209 11.7085C7.60209 12.972 8.63003 14 9.89361 14C11.1572 14 12.1851 12.972 12.1851 11.7086C12.1851 10.445 11.1572 9.41703 9.89361 9.41703ZM8.43766 2.29154C8.43766 1.48873 9.09082 0.835596 9.89361 0.835596C10.6964 0.835596 11.3495 1.48873 11.3495 2.29154C11.3495 3.09435 10.6964 3.74748 9.89361 3.74748C9.09079 3.74748 8.43766 3.09432 8.43766 2.29154ZM2.29154 8.45593C1.48862 8.45593 0.835487 7.80277 0.835487 6.99999C0.835487 6.1972 1.48862 5.54404 2.29154 5.54404C3.09435 5.54404 3.74737 6.1972 3.74737 6.99999C3.74737 7.80277 3.09432 8.45593 2.29154 8.45593ZM8.43766 11.7085C8.43766 10.9057 9.09082 10.2525 9.89361 10.2525C10.6964 10.2525 11.3495 10.9057 11.3495 11.7084C11.3495 12.5112 10.6964 13.1644 9.89361 13.1644C9.09079 13.1644 8.43766 12.5112 8.43766 11.7084V11.7085Z"
+                                                fill="white"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h5 class="font-semibold text-[20px] text-etBlack mb-[4px]"><a
+                                        href="teacher-details.html" class="hover:text-etBlue">Cameron Williamson</a>
+                                </h5>
+                                <span class="text-etGray text-[16px]">President of Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- single teacher -->
+                    <div class="swiper-slide">
+                        <div class="ed-teacher group">
+                            <div class="ed-teacher__img rounded-[16px] overflow-hidden">
+                                <img src="assets/img/teacher-1.jpg" alt="Team Member Image"
+                                    class="w-full aspect-[370/375] duration-[400ms] group-hover:scale-110">
+                            </div>
+
+                            <div
+                                class="ed-teacher__txt bg-white relative z-[1] mx-[25px] lg:mx-[20px] md:mx-[15px] xs:mx-[5px] -mt-[44px] md:-mt-[15px] xs:mt-0 rounded-[16px] shadow-[0_4px_60px_rgba(18,96,254,0.12)] px-[25px] xl:px-[20px] md:px-[15px] pb-[30px] lg:pb-[25px] md:pb-[20px] before:w-full before:absolute before:-z-[1] before:h-full before:bg-white before:left-0 before:rounded-[16px] before:-top-[33px] before:skew-y-[4deg]">
+                                <div class="ed-teacher-socials absolute right-[20px] -top-[43px]">
+                                    <div
+                                        class="ed-speaker__socials flex flex-col gap-[8px] absolute -z-[2] text-[14px] opacity-0 transition duration-[400ms] bottom-[calc(100%+8px)] translate-y-[100%] group-hover:translate-y-0 group-hover:opacity-100">
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-x-twitter"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-linkedin-in"></i></a>
+                                        <a href="#"
+                                            class="bg-white text-edpurple w-[36px] h-[36px] flex items-center justify-center rounded-full hover:text-white hover:bg-edpurple"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                    </div>
+                                    <div
+                                        class="ed-teacher-socials__icon bg-edpurple w-[36px] aspect-square rounded-full bg-etBlue flex items-center justify-center">
+                                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.89361 9.41703C9.22284 9.41703 8.61849 9.70668 8.19906 10.1675L4.42637 7.83088C4.52995 7.56611 4.58305 7.28429 4.58294 6.99999C4.58307 6.71568 4.52997 6.43386 4.42637 6.16909L8.19906 3.83238C8.61851 4.29318 9.22284 4.58297 9.89361 4.58297C11.1572 4.58297 12.1851 3.55501 12.1851 2.29143C12.1851 1.02785 11.1572 0 9.89361 0C8.63005 0 7.60209 1.02796 7.60209 2.29154C7.60204 2.57583 7.65514 2.85763 7.75866 3.1224L3.98608 5.45903C3.56663 4.99824 2.96231 4.70845 2.29154 4.70845C1.02796 4.70845 0 5.73652 0 6.99999C0 8.26354 1.02796 9.29152 2.29154 9.29152C2.96228 9.29152 3.56666 9.00185 3.98608 8.54094L7.75869 10.8776C7.65515 11.1424 7.60204 11.4242 7.60209 11.7085C7.60209 12.972 8.63003 14 9.89361 14C11.1572 14 12.1851 12.972 12.1851 11.7086C12.1851 10.445 11.1572 9.41703 9.89361 9.41703ZM8.43766 2.29154C8.43766 1.48873 9.09082 0.835596 9.89361 0.835596C10.6964 0.835596 11.3495 1.48873 11.3495 2.29154C11.3495 3.09435 10.6964 3.74748 9.89361 3.74748C9.09079 3.74748 8.43766 3.09432 8.43766 2.29154ZM2.29154 8.45593C1.48862 8.45593 0.835487 7.80277 0.835487 6.99999C0.835487 6.1972 1.48862 5.54404 2.29154 5.54404C3.09435 5.54404 3.74737 6.1972 3.74737 6.99999C3.74737 7.80277 3.09432 8.45593 2.29154 8.45593ZM8.43766 11.7085C8.43766 10.9057 9.09082 10.2525 9.89361 10.2525C10.6964 10.2525 11.3495 10.9057 11.3495 11.7084C11.3495 12.5112 10.6964 13.1644 9.89361 13.1644C9.09079 13.1644 8.43766 12.5112 8.43766 11.7084V11.7085Z"
+                                                fill="white"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h5 class="font-semibold text-[20px] text-etBlack mb-[4px]"><a
+                                        href="teacher-details.html" class="hover:text-etBlue">Cameron Williamson</a>
+                                </h5>
+                                <span class="text-etGray text-[16px]">President of Sales</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- TEACHER SECTION END -->
+</main>
+
+{% endblock %}

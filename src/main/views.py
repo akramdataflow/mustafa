@@ -22,3 +22,8 @@ def course_details(request,id):
     num_enrollments = Enrollment.objects.filter(course=course).count()
     context = {'courses':courses, 'course':course, 'average_rating': average_rating, 'num_enrollments':num_enrollments, 'teacher': course.teacher}
     return render(request, 'course-details.html', context)
+
+def teachers(request):
+    courses = Course.objects.all()
+    context = {'courses':courses}
+    return render(request, 'teachers.html', context)
