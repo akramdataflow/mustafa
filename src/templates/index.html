@@ -18,7 +18,7 @@
                         Explore Your Skills With <span class="font-bold"><span
                                 class="inline-block text-edpurple relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[240px] before:h-[21px] before:bg-[url('../assets/img/banner-2-title-vector.svg')]">Online</span>
                             Class</span></h1>
-                    <p class="text-edgray font-medium mb-[41px]">Smply dummy text of the printing and typesetting
+                    <!--<p class="text-edgray font-medium mb-[41px]">Smply dummy text of the printing and typesetting
                         industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an
                         unknown printer took a galley of type and scrambled</p>
                     <div class="flex flex-wrap gap-[10px]">
@@ -28,14 +28,14 @@
                         <a href="about.html"
                             class="ed-btn !bg-transparent border border-black !text-black hover:!bg-black hover:!text-white">about
                             us</a>
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- banner image -->
                 <div class="w-max relative z-[1] flex gap-[30px] items-center">
-                    <img src="{% static 'img/banner-2-img-1.jpg' %}" alt="banner image"
+                    <img src="{% static 'img/treu/WhatsApp Image 2024-12-17 at 2.04.27 PM (1).jpeg' %}" alt="banner image"
                         class="border-[10px] border-white rounded-[20px] max-w-[241px] aspect-[261/366]">
-                    <img src="{% static 'img/banner-2-img-2.jpg' %}" alt="banner image" class="rounded-[20px]">
+                    <img src="{% static 'img/treu/WhatsApp Image 2024-12-17 at 2.04.28 PM.jpeg' %}" alt="banner image" class="rounded-[20px]">
                 
                     <!-- vectors -->
                     <div>
@@ -146,9 +146,6 @@
                             class="relative shrink-0 -ml-[202px] lg:-ml-[262px] md:-ml-[202px] xs:-ml-[242px] -mb-[24px]">
                             <img src="{% static 'img/about-2-image-2.png' %}" alt="About Image"
                                 class="border-[8px] border-white rounded-full w-[292px] xs:w-[252px] aspect-square">
-                            <a href="https://youtu.be/5ppDzM8m9lI?si=zml3HbV176DBsZlg" data-fslightbox="gallery"
-                                class="flex items-center justify-center w-[60px] aspect-square bg-white rounded-full text-edyellow absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] before:border before:absolute before:top-[50%] before:-translate-y-[50%] before:left-[50%] before:-translate-x-[50%] before:w-[calc(100%+15px)] before:h-[calc(100%+15px)] before:rounded-full before:transition before:duration-[400ms] hover:bg-edpurple hover:text-white hover:before:border-edpurple"><i
-                                    class="fa-solid fa-play"></i></a>
                         </div>
 
                         <!-- vectors -->
@@ -600,36 +597,29 @@
     <section class="py-[80px] bg-edblue">
         <div class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px]">
             <div class="flex md:flex-wrap gap-[70px] lg:gap-[50px] *:flex-auto">
-                <!-- single stat -->
-                <div
-                    class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
-                    <img src="{% static 'img/stat-1.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]">25+</h3>
-                    <h6 class="font-medium">Year of experience</h6>
-                </div>
 
                 <!-- single stat -->
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-2.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]">6,500+</h3>
-                    <h6 class="font-medium">Class Completed</h6>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">{{courses_count}}+</h3>
+                    <h6 class="font-medium" style="color: azure;">Class Completed</h6>
                 </div>
 
                 <!-- single stat -->
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-3.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]">100+</h3>
-                    <h6 class="font-medium">Experts Instructors</h6>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">100+</h3>
+                    <h6 class="font-medium" style="color: azure;">Experts Instructors</h6>
                 </div>
 
                 <!-- single stat -->
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-4.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]">6,561+</h3>
-                    <h6 class="font-medium">Students Enrolled</h6>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">{{users_count}}+</h3>
+                    <h6 class="font-medium" style="color: azure;">Students Enrolled</h6>
                 </div>
             </div>
         </div>
@@ -637,159 +627,7 @@
     <!-- STATS SECTION END -->
 
 
-    <!-- CTA 2 SECTION START -->
-    <section class="mt-[120px] xl:mt-[80px] md:mt-[60px]">
-        <div
-            style="background-image: url('{% static "img/cta-3-bg.jpg" %}');"
-            class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px] bg-no-repeat bg-cover bg-center rounded-[20px] overflow-hidden text-center py-[120px] xl:py-[80px] md:py-[60px] relative z-[1] before:absolute before:inset-0 before:bg-edpurple/80 before:-z-[1]">
-            <div class="max-w-[570px] mx-auto">
-                <h6 class="ed-section-sub-title ed-section-sub-title--white mr-[48px]">Online Class</h6>
-                <h2 class="ed-section-title !text-white mb-[18px]">Expert Instructor Live Classes Here!</h2>
-                <a href="course-grid.html"
-                    class="ed-btn !h-[56px] !bg-white !text-black gap-[10px] hover:!bg-edyellow hover:!text-edblue">Join
-                    Courses <span class="icon"><i class="fa-solid fa-arrow-right-long"></i></span></a>
-            </div>
-        </div>
-    </section>
-    <!-- CTA 2 SECTION END -->
-
-
-    <!-- NEWS SECTION START -->
-    <section class="pt-[120px] xl:pt-[80px] md:pt-[60px]">
-        <div class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px]">
-            <!-- heading -->
-            <div class="flex flex-wrap items-end justify-between mb-[60px] lg:mb-[40px] gap-[15px]">
-                <!-- left -->
-                <div class="max-w-[35%] md:max-w-[40%] sm:max-w-none">
-                    <h6 class="ed-section-sub-title">latest news</h6>
-                    <h2 class="ed-section-title">our latest news & blog </h2>
-                </div>
-
-                <!-- right -->
-                <a href="news-grid.html"
-                    class="ed-btn !h-[56px] gap-[10px] border border-[#E5E5E5] !bg-transparent !text-edpurple hover:!bg-edpurple hover:!border-edpurple hover:!text-white">View
-                    all blog <span><i class="fa-solid fa-arrow-right-long"></i></span></a>
-            </div>
-
-            <!-- news cards -->
-            <div class="grid grid-cols-2 md:grid-cols-1 gap-[30px]">
-                <!-- news big card -->
-                <div class="rounded-[20px] bg-edoffwhite overflow-hidden">
-                    <!-- img -->
-                    <div class="relative">
-                        <img src="{% static 'img/blog-big.jpg' %}" alt="blog cover" class="w-full aspect-[570/290]">
-                        <!-- date -->
-                        <div
-                            class="absolute top-[30px] left-[30px] bg-[#ECF0F5] rounded-[10px] font-medium text-[14px] text-black inline-block uppercase overflow-hidden text-center">
-                            <span class="bg-edpurple text-white block py-[3px] rounded-[10px]">10</span>
-                            <span class="px-[11px] py-[2px] block">June</span>
-                        </div>
-                    </div>
-
-                    <!-- txt -->
-                    <div class="px-[30px] xxs:px-[20px] py-[22px] pt-[27px]">
-                        <!-- infos -->
-                        <div class="flex items-center gap-[16px] mb-[9px]">
-                            <!-- single info -->
-                            <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                <span><img src="{% static 'img/icon/user-filled-purple.svg' %}" alt="icon"></span>
-                                <span>By Admin</span>
-                            </div>
-
-                            <!-- single info -->
-                            <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                <span><img src="{% static 'img/icon/comment.svg' %}" alt="icon"></span>
-                                <span>2 Comments</span>
-                            </div>
-                        </div>
-                        <h5 class="font-medium text-[20px]"><a href="news-details.html"
-                                class="hover:text-edpurple">Collaboratively pontificate bleeding edge resources with
-                                inexpensive methodologies</a></h5>
-                    </div>
-                </div>
-
-                <!-- right / news small cards -->
-                <div class="bg-edoffwhite rounded-[20px] p-[30px] xxs:p-[20px] space-y-[26px]">
-                    <!-- single news -->
-                    <div
-                        class="flex xxs:flex-col gap-x-[25px] gap-y-[15px] items-center xxs:items-start border-b last:border-0 pb-[26px] last:pb-0">
-                        <!-- img -->
-                        <div class="shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="{% static 'img/news-2-img-2.jpg' %}" alt="blog cover"
-                                class="w-[142px] aspect-[142/153] object-cover">
-                        </div>
-
-                        <!-- txt -->
-                        <div>
-                            <!-- infos -->
-                            <div class="flex items-center gap-[16px] mb-[9px]">
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                    <span><img src="{% static 'img/icon/user-filled-purple.svg' %}" alt="icon"></span>
-                                    <span>By Admin</span>
-                                </div>
-
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                    <span><img src="{% static 'img/icon/comment.svg' %}" alt="icon"></span>
-                                    <span>2 Comments</span>
-                                </div>
-                            </div>
-                            <h5 class="font-medium text-[20px] mb-[17px]"><a href="news-details.html"
-                                    class="hover:text-edpurple">Collaboratively pontificate bleedi edge resources</a>
-                            </h5>
-
-                            <!-- date -->
-                            <div
-                                class="bg-[#ECF0F5] rounded-[10px] font-medium text-[14px] text-black inline-block uppercase overflow-hidden text-center">
-                                <span class="bg-edpurple text-white block py-[3px] rounded-[10px]">10</span>
-                                <span class="px-[11px] py-[2px] block">June</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- single news -->
-                    <div
-                        class="flex xxs:flex-col gap-x-[25px] gap-y-[15px] items-center xxs:items-start border-b last:border-0 pb-[26px] last:pb-0">
-                        <!-- img -->
-                        <div class="shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="{% static 'img/news-2-img-3.jpg' %}" alt="blog cover"
-                                class="w-[142px] aspect-[142/153] object-cover">
-                        </div>
-
-                        <!-- txt -->
-                        <div>
-                            <!-- infos -->
-                            <div class="flex items-center gap-[16px] mb-[9px]">
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                    <span><img src="{% static 'img/icon/user-filled-purple.svg' %}" alt="icon"></span>
-                                    <span>By Admin</span>
-                                </div>
-
-                                <!-- single info -->
-                                <div class="flex items-center gap-[10px] font-medium text-[12px] text-edgray">
-                                    <span><img src="{% static 'img/icon/comment.svg' %}" alt="icon"></span>
-                                    <span>2 Comments</span>
-                                </div>
-                            </div>
-                            <h5 class="font-medium text-[20px] mb-[17px]"><a href="news-details.html"
-                                    class="hover:text-edpurple">Collaboratively pontificate bleedi edge resources</a>
-                            </h5>
-
-                            <!-- date -->
-                            <div
-                                class="bg-[#ECF0F5] rounded-[10px] font-medium text-[14px] text-black inline-block uppercase overflow-hidden text-center">
-                                <span class="bg-edpurple text-white block py-[3px] rounded-[10px]">10</span>
-                                <span class="px-[11px] py-[2px] block">June</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- NEWS SECTION END -->
+   
 
 
 

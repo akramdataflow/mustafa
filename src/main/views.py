@@ -5,7 +5,10 @@ from django.db.models import Avg
 # Create your views here.
 def main(request):
     courses = Course.objects.all()
-    context = {'courses':courses}
+    users = User.objects.all()
+    users_count = users.count()
+    courses_count = courses.count()
+    context = {'courses':courses, 'users':users, 'users_count':users_count, 'courses_count':courses_count}
     return render(request, 'index.html', context)
 
 
