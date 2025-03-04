@@ -10,6 +10,7 @@ authors = [{ name ="Tarek Kalaji", email = "tarek.it.eng@gmail.com" }]
 readme = "README.md"
 dependencies = [
     "Django",
+    "django-autoslug",
     # API
     "djangorestframework",
     "djangorestframework_simplejwt",
@@ -23,7 +24,9 @@ dependencies = [
     # utils
     "Pillow",
     "python-dotenv",
+    "python-dateutil",
     "requests",
+    "user-agents",
     # Deployment
     "gunicorn",
     "uvicorn",

@@ -1,0 +1,27 @@
+{% load static %}
+<footer class="bg-edblue relative z-[1] before:absolute before:inset-0 before:-z-[1] before:bg-[url('../assets/img/footer-bg.jpg')] before:opacity-[7%] before:bg-no-repeat before:bg-cover before:bg-center text-white">
+    <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+        <!-- footer top -->
+        <div class="flex flex-wrap justify-between gap-[35px] pt-[100px] pb-[58px] border-b border-white/20">
+            <!-- footer about -->
+            <div class="max-w-[370px] xxs:max-w-full">
+                <a href="/" class="inline-block mb-[23px]"><img src="{% static 'img/logo-light.png' %}"
+                        alt="logo"></a>
+                <p class="text-[#D9D9D9] mb-[19px]">Nullam interdum libero vitae pretium aliquam donec nibh purus
+                    laoreet in ullamcorper vel malesuada sit amet enim.</p>
+
+                <ul class="space-y-[17px]">
+                    <li class="flex items-center gap-[8px]">
+                        <span class="icon"><img src="{% static 'img/call-icon-yellow.svg' %}" alt="icon"></span>
+                        <a href="tel:+6108-666-0112" class="hover:text-edyellow">+6108-666-0112</a>
+                    </li>
+
+                    <li class="flex items-center gap-[8px]">
+                        <span class="icon"><img src="{% static 'img/message-yellow.svg' %}" alt="icon"></span>
+                        <a href="mailto:info@gmail.com" class="hover:text-edyellow">info@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

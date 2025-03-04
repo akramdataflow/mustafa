@@ -1,9 +1,14 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
-     path('', views.main, name='home'),
-     path('courses/', views.courses, name='courses'),
-     path('courses/<int:id>/', views.course_details, name='course_details'),
-     path('teachers/', views.teachers, name='teachers'),
+     path('course/', include(arg=[
+          path('teachers/', views.teacher_list_view, name='teachers'),
+          path('<str:slug>/', views.course_details_view, name='course_details'),
+          path('', views.course_list_view, name='course_list'),
+     ])),
+     
+     
+
+     path('', views.home_view, name='home'),
 ]
