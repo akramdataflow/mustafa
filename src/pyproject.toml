@@ -11,6 +11,7 @@ readme = "README.md"
 dependencies = [
     "Django",
     "django-autoslug",
+    "django-embed-video",
     # API
     "djangorestframework",
     "djangorestframework_simplejwt",
@@ -27,6 +28,7 @@ dependencies = [
     "python-dateutil",
     "requests",
     "user-agents",
+    "moviepy",
     # Deployment
     "gunicorn",
     "uvicorn",

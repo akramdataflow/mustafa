@@ -34,6 +34,7 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
     image = models.ImageField(upload_to=image_upload)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='categories')
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.ForeignKey('core.Currency', on_delete=models.SET_NULL, null=True, related_name='currencies')
     teachers = models.ManyToManyField('Teacher', related_name='teachers')
     level = models.CharField(max_length=20,choices=LEVEL_CHOICES, default=BEGINNER)
     lessons_count = models.IntegerField(default=0)
@@ -43,6 +44,9 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
     discount_starts_at = models.DateField()
     discount_ends_at = models.DateField()
 
+    is_active = models.BooleanField(default=True)
+    has_certificate = models.BooleanField(default=False)
+
     def __str__(self):
         return self.name
     
@@ -50,20 +54,10 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
         today = timezone.now().date()
         return self.discount_starts_at <= today <= self.discount_ends_at
     
+    def duration(self):
+        duration = 0
+        for lesson in self.lessons.all():
+            duration += lesson.duration
+        return duration
+    
 
-class Lesson(TimeStampedModel, UniqueIdentifierModel):
-    class Meta:
-        verbose_name = 'Lesson'
-        verbose_name_plural = 'Lessons'
-
-    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='courses')
-    name = models.CharField(max_length=200)
-    slug = AutoSlugField(populate_from='name', unique=True)
-    body = models.TextField(blank=True, null=True)
-    file = models.FileField(upload_to='lessons/', blank=True, null=True)
-    url = models.URLField(blank=True, null=True)
-    order = models.PositiveIntegerField(default=0)
-    is_preview = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
