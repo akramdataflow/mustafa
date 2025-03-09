@@ -1,3 +1,4 @@
+import uuid
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from core.models import TimeStampedModel, UniqueIdentifierModel
@@ -8,6 +9,11 @@ from django.db.models.signals import pre_save
 import mimetypes
 import math
 import moviepy.editor
+
+
+def file_upload(instance, filename):
+    file_name, extension = filename.split('.')
+    return f"lessons/{uuid.uuid4().hex}_{file_name}.{extension}"
 
 
 class Lesson(TimeStampedModel, UniqueIdentifierModel):
@@ -37,11 +43,11 @@ class Lesson(TimeStampedModel, UniqueIdentifierModel):
         (LINK, 'Link'),
     )
 
-    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='courses')
+    course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='lessons')
     name = models.CharField(_("Name"), max_length=200)
     slug = AutoSlugField(populate_from='name', unique=True)
     body = models.TextField(_("Body"), blank=True, null=True)
-    file = models.FileField(_("File"), upload_to='lessons/', blank=True, null=True)
+    file = models.FileField(_("File"), upload_to=file_upload, blank=True, null=True)
     url = models.URLField(_("URL"), blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
     is_preview = models.BooleanField(default=False)

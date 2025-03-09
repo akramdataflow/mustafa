@@ -13,4 +13,6 @@ class EnrolledCourse(TimeStampedModel):
     is_completed = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = _('Enrolled Course')
+        verbose_name_plural = _('Enrolled Courses')
         unique_together = ('user', 'course')

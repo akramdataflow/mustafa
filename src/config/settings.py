@@ -93,3 +93,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR/'media')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+
+SITE_TITLE = "Learning site admin"
+SITE_HEADER = "Learning administration"
+INDEX_TITLE = "Dashboard administration"

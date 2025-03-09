@@ -5,4 +5,5 @@ from django.contrib import admin
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'user', 'email', 'bio', 'image')
-    prepopulated_fields = {'slug': ('name',)}
+    list_filter = ('user',)
+    search_fields = ('name', 'email')
