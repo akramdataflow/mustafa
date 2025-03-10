@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}LMS{% endblock title %}</title>
-    <link rel="shortcut icon" href="{% static 'favicon.svg' %}" type="image/x-icon">
+    <title>{% block title %}Learning Center{% endblock title %}</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/slim-select/slimselect.css' %}">
@@ -23,7 +23,7 @@
     <script src="{% static 'vendor/slim-select/slimselect.min.js' %}"></script>
 
     <script src="{% static 'js/main.js' %}"></script>
-    <!-- <script src="assets/js/header-2.js"></script> -->
+    <!-- <script src="{% static 'js/header-2.js' %}"></script> -->
     <script src="{% static 'js/accordion.js' %}"></script>
     {% block extra_js %}{% endblock extra_js %}
 </body>

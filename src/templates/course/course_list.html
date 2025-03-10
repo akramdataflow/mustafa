@@ -1,103 +1,79 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-    <div class="ed-overlay group">
-        <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
-    </div>
-
-    <!-- search -->
-    <div class="ed-search group">
-        <form action="#" class="bg-white fixed z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[100px] md:h-[70px] xxs:h-[50px] w-[1224px] max-w-[95%] flex gap-[10px] rounded-full overflow-hidden px-[40px] xxs:px-[20px] pointer-events-none opacity-0 group-[.active]:pointer-events-auto group-[.active]:opacity-100 duration-[400ms]">
-            <input type="search" name="ed-search" placeholder="Search Here..." class="bg-transparent w-full focus:outline-none">
-            <button class="text-[25px] md:text-[22px] xxs:text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-    </div>
-
-    <!-- sidebar -->
-    <div class="ed-sidebar">
-        <div class="translate-x-[100%] transition-transform ease-linear duration-300 fixed right-0 w-full max-w-[25%] xl:max-w-[30%] lg:max-w-[40%] md:max-w-[50%] sm:max-w-[60%] xxs:max-w-full bg-white h-full z-[100] overflow-auto">
-            <!-- heading -->
-            <div class="ed-sidebar-heading p-[20px] lg:p-[20px] border-b border-edgray/20">
-                <div class="logo flex justify-between items-center">
-                    <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
-
-                    <button type="button" class="ed-sidebar-close-btn border border-edgray/20 w-[45px] aspect-square shrink-0 text-black text-[22px] rounded-full hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
-                </div>
+<div class="ed-overlay group">
+    <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
+</div>
+<div class="ed-search group">
+    <form action="#" class="bg-white fixed z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[100px] md:h-[70px] xxs:h-[50px] w-[1224px] max-w-[95%] flex gap-[10px] rounded-full overflow-hidden px-[40px] xxs:px-[20px] pointer-events-none opacity-0 group-[.active]:pointer-events-auto group-[.active]:opacity-100 duration-[400ms]">
+        <input type="search" name="ed-search" placeholder="Search Here..." class="bg-transparent w-full focus:outline-none">
+        <button class="text-[25px] md:text-[22px] xxs:text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</div>
+<div class="ed-sidebar">
+    <div class="translate-x-[100%] transition-transform ease-linear duration-300 fixed right-0 w-full max-w-[25%] xl:max-w-[30%] lg:max-w-[40%] md:max-w-[50%] sm:max-w-[60%] xxs:max-w-full bg-white h-full z-[100] overflow-auto">
+        <div class="ed-sidebar-heading p-[20px] lg:p-[20px] border-b border-edgray/20">
+            <div class="logo flex justify-between items-center">
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+                <button type="button" class="ed-sidebar-close-btn border border-edgray/20 w-[45px] aspect-square shrink-0 text-black text-[22px] rounded-full hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
             </div>
-
-            <!-- mobile menu -->
-            <div class="ed-header-nav-in-mobile"></div>
         </div>
+        <div class="ed-header-nav-in-mobile"></div>
     </div>
-
-
-    <main>
-        <!-- BREADCRUMB SECTION START -->
-        <section class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
-            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-                <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Course Grid</h1>
-                <ul class="flex items-center justify-center gap-[10px] text-white">
-                    <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
-                    <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
-                    <li>Courses</li>
-                </ul>
-            </div>
-
-            <div class="vectors">
-                <img src="{% static 'img/breadcrumb-vector-1.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
-                <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
-            </div>
-        </section>
-        <!-- BREADCRUMB SECTION END -->
-
-
-        <!-- COURSE GRID SECTION START -->
-        <div class="py-[120px] xl:py-[80px] md:py-[60px]">
-            <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-                <div class="grid grid-cols-3 md:grid-cols-2 xxs:grid-cols-1 gap-[30px] lg:gap-[20px]">
-                    {% for course in courses %}
-                    <!-- single course card -->
-                    <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
-                        <!-- course image  -->
-                        <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
-                            <img src="{{course.image.url}}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
-                            <!--<span class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
-                                <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
-                                <span class="txt">8h 30m</span>
-                            </span>-->
-                        </div>
-
-                        <!-- course infos -->
-                        <div class="flex justify-between items-center mb-[16px]">
-                            <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">Expert</span>
-                            <span class="text-edpurple font-semibold text-[20px]">$59.00</span>
-                        </div>
-
-                        <!-- course title -->
-                        <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.id %}" class="hover:text-edpurple">{{ course.title }}</a></h5>
-
-                        <!-- course stats -->
-                        <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
-                            <div class="flex items-center gap-[8px] text-[14px] text-edgray">
-                                <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
-                                <span class="txt">{{ course.lessons_count }} Lesson</span>
-                            </div>
-                        </div>
-
-                        <!-- course footer -->
-                        <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
-                            <!-- course author -->
-                            <div class="flex items-center gap-[8px]">
-                                <img src="{{course.teacher.image.url}}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
-                                <a href="teacher-details.html" class="hover:text-edpurple">Jane Cooper</a>
-                            </div>
+</div>
+<main>
+    <section style="background-image: url('/static/img/breadcrumb-bg.jpg');" class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('/static/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Courses</h1>
+            <ul class="flex items-center justify-center gap-[10px] text-white">
+                <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+                <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
+                <li>Courses</li>
+            </ul>
+        </div>
+        <div class="vectors">
+            <img src="{% static 'img/breadcrumb-vector-1.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
+            <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
+        </div>
+    </section>
+    <div class="py-[120px] xl:py-[80px] md:py-[60px]">
+        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+            <div class="grid grid-cols-3 md:grid-cols-2 xxs:grid-cols-1 gap-[30px] lg:gap-[20px]">
+                {% for course in courses %}
+                <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
+                    <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
+                        <img src="{{course.image.url}}" alt="{{ course.name }}" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                        <span class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
+                            <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
+                            <span class="txt">{{ course.duration_format }}</span>
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center mb-[16px]">
+                        <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">{{ course.level }}</span>
+                        <span class="text-edpurple font-semibold text-[20px]">{{ course.price }} {{ course.currency.code3 }}</span>
+                    </div>
+                    <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.slug %}" class="hover:text-edpurple">{{ course.name }}</a></h5>
+                    <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
+                        <div class="flex items-center gap-[8px] text-[14px] text-edgray">
+                            <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
+                            <span class="txt">{{ course.lessons.count }} Lesson</span>
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
+                        <!-- course author -->
+                        <div class="flex items-center gap-[8px]">
+                            {% for teacher in course.teachers.all %}
+                            {% comment %}
+                            <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}" class="w-[34px] aspect-square object-cover">
+                            {% endcomment %}
+                            <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edpurple">{{ teacher }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        <!-- COURSE GRID SECTION END -->
-    </main>
-
-    {% endblock %}
+    </div>
+</main>
+{% endblock %}

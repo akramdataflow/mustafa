@@ -12,8 +12,7 @@
                             class="text-edpurple">Learning</span> COURSE</h6>
                     <h1
                         class="font-medium text-[clamp(35px,5.4vw,80px)] text-edblue tracking-tight leading-[1.12] mb-[25px]">
-                        Explore Your Skills With <span class="font-bold"><span
-                                class="inline-block text-edpurple relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[240px] before:h-[21px] before:bg-[url('../assets/img/banner-2-title-vector.svg')]">Online</span>
+                        Explore Your Skills With <span class="font-bold"><span style="background-image: url('/static/img/banner-2-title-vector.svg')" class="inline-block text-edpurple relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[240px] before:h-[21px] before:bg-[url('/static/img/banner-2-title-vector.svg')]">Online</span>
                             Class</span></h1>
                     <!--<p class="text-edgray font-medium mb-[41px]">Smply dummy text of the printing and typesetting
                         industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an
@@ -74,24 +73,26 @@
             <!-- section heading -->
             <div class="text-center mb-[21px]">
                 <h6 class="ed-section-sub-title">Our Courses</h6>
-                <h2 class="ed-section-title">Edutics Courses</h2>
+                <h2 class="ed-section-title">Popular Courses</h2>
             </div>
 
 
             <!-- course cards -->
-            <div
-                class="ed-2-courses-container grid grid-cols-4 xl:grid-cols-3 md:grid-cols-2 xs:grid-cols-1 gap-[30px] xxl:gap-[20px]">
+            <div class="ed-2-courses-container grid grid-cols-4 xl:grid-cols-3 md:grid-cols-2 xs:grid-cols-1 gap-[30px] xxl:gap-[20px]">
                 <!-- single course -->
                  {% for course in courses %}
                 <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
                     <!-- course image  -->
                     <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
-                        <img src="{{ course.image.url }}" alt="Course Image"
-                            class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                        {% if course.image %}
+                        <img src="{{ course.image.url }}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                        {% else %}
+                        <img src="{% static 'img/course-details.jpg' %}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                        {% endif %}
                         <span
                             class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
                             <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
-                            <span class="txt">8h 30m</span>
+                            <span class="txt">{{ course.duration_format }}</span>
                         </span>
                     </div>
 
@@ -99,27 +100,25 @@
                     <div class="flex justify-between items-center mb-[16px]">
                         <span
                             class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">Expert</span>
-                        <span class="text-edpurple font-semibold text-[20px]">${{course.price}}</span>
+                        <span class="text-edpurple font-semibold text-[20px]">{{course.price}} {{ course.currency.code3 }}</span>
                     </div>
 
                     <!-- course title -->
-                    <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.id %}"
-                            class="hover:text-edpurple">{{course.title}}</a></h5>
+                    <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.slug %}"
+                            class="hover:text-edpurple">{{course.name}}</a></h5>
 
-                            <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
-                                <!-- course author -->
-                                <div class="flex items-center gap-[8px]">
-                                    <img src="{{ course.teacher.image.url }}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
-                                    <a href="teacher-details.html" class="hover:text-edpurple">{{course.teacher}}</a>
-                                </div>
-    
-                            
+                        <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
+                            <!-- course author -->
+                            <div class="flex items-center gap-[8px]">
+                                {% for teacher in course.teachers.all %}
+                                {% comment %}
+                                <img src="{{ teacher.image.url }}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
+                                {% endcomment %}
+                                <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edpurple">{{ teacher }}</a>
+                                {% endfor %}
                             </div>
-
-                    
-
-                
-                </div>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
         </div>
@@ -128,29 +127,19 @@
 
 
     <!-- ABOUT SECTION START -->
-    <section
-        class="ed-2-about bg-edoffwhite py-[120px] xl:py-[80px] md:py-[60px] relative z-[1] before:absolute before:inset-0 before:-z-[1] before:bg-[url('../assets/img/about-us-bg.png')] before:opacity-[5%] before:bg-no-repeat before:bg-cover before:bg-center before:mix-blend-multiply">
+    <section style=" background-image: url('/static/img/about-us-bg.png');" class="ed-2-about bg-edoffwhite py-[120px] xl:py-[80px] md:py-[60px] relative z-[1] before:absolute before:inset-0 before:-z-[1] before:bg-[url('../img/about-us-bg.png')] before:opacity-[5%] before:bg-no-repeat before:bg-cover before:bg-center before:mix-blend-multiply">
         <div class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px]">
             <div class="flex md:flex-col gap-x-[75px] gap-y-[30px]">
                 <!-- left -->
                 <div class="max-w-[46%] md:max-w-full grow shrink-0">
                     <div class="relative flex items-end">
-                        <img src="{% static 'img/about-2-image-1.png' %}" alt="About Image"
-                            class="border-[12px] border-white rounded-full">
-
-                        <!-- video btn -->
-                        <div
-                            class="relative shrink-0 -ml-[202px] lg:-ml-[262px] md:-ml-[202px] xs:-ml-[242px] -mb-[24px]">
-                            <img src="{% static 'img/about-2-image-2.png' %}" alt="About Image"
-                                class="border-[8px] border-white rounded-full w-[292px] xs:w-[252px] aspect-square">
+                        <img src="{% static 'img/about-2-image-1.png' %}" alt="About Image 11" class="border-[12px] border-white rounded-full">
+                        <div class="relative shrink-0 -ml-[202px] lg:-ml-[262px] md:-ml-[202px] xs:-ml-[242px] -mb-[24px]">
+                            <img src="{% static 'img/about-2-image-2.png' %}" alt="About Image 22" class="border-[8px] border-white rounded-full w-[292px] xs:w-[252px] aspect-square">
                         </div>
-
-                        <!-- vectors -->
                         <div>
-                            <img src="{% static 'img/about-2-img-vector.svg' %}" alt="vector"
-                                class="absolute pointer-events-none top-[60px] right-[65px] -z-[1]">
-                            <img src="{% static 'img/about-2-img-vector-2.svg' %}" alt="vector"
-                                class="absolute pointer-events-none -bottom-[30px] right-0 -z-[1] md:hidden">
+                            <img src="{% static 'img/about-2-img-vector.svg' %}" alt="vector" class="absolute pointer-events-none top-[60px] right-[65px] -z-[1]">
+                            <img src="{% static 'img/about-2-img-vector-2.svg' %}" alt="vector" class="absolute pointer-events-none -bottom-[30px] right-0 -z-[1] md:hidden">
                         </div>
                     </div>
                 </div>
@@ -159,13 +148,13 @@
                 <div class="max-w-[54%] md:max-w-full">
                     <h6 class="ed-section-sub-title">About us</h6>
                     <h2 class="ed-section-title mb-[6px]">Learn New <span
-                            class="inline-block font-bold relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[137px] before:h-[14px] before:bg-[url('../assets/img/banner-2-title-vector.svg')] before:bg-[length:100%_100%]">Skills</span>
+                            class="inline-block font-bold relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[137px] before:h-[14px] before:bg-[url('../img/banner-2-title-vector.svg')] before:bg-[length:100%_100%]">Skills</span>
                         To Go Ahead For Your Career</h2>
                     <p class="text-edgray mb-[34px]">Aonsectetur adipiscing elit Aenean scelerisque augue vitae
                         consequat Juisque eget congue velit in cursus leo sodales the turpis euismod quis sapien euismod
                         quis sapien the.</p>
                     <ul
-                        class="ed-about-list font-medium text-[18px] text-edblue grid grid-cols-2 xxs:grid-cols-1 gap-[20px] xxs:gap-[15px] mb-[52px] *:pl-[40px] *:relative *:before:absolute *:before:left-0 *:before:-top-[3px] *:before:w-[30px] *:before:aspect-square *:before:border *:before:border-edpurple *:before:rounded-full *:before:bg-[url(../assets/img/icon/checkmark.svg)] *:before:bg-no-repeat *:before:bg-[length:15px_13px] *:before:bg-center">
+                        class="ed-about-list font-medium text-[18px] text-edblue grid grid-cols-2 xxs:grid-cols-1 gap-[20px] xxs:gap-[15px] mb-[52px] *:pl-[40px] *:relative *:before:absolute *:before:left-0 *:before:-top-[3px] *:before:w-[30px] *:before:aspect-square *:before:border *:before:border-edpurple *:before:rounded-full *:before:bg-[url(/static/img/icon/checkmark.svg)] *:before:bg-no-repeat *:before:bg-[length:15px_13px] *:before:bg-center">
                         <li>Flexible Course Plan</li>
                         <li>Educator Support</li>
                         <li>Expert mentors</li>
@@ -527,13 +516,15 @@
             
             <div class="grid grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 xxs:grid-cols-1 gap-[30px] md:gap-[15px]">
                 <!-- single instructor -->
-                {% for course in courses %}
+                {% for teacher in teachers %}
                 <div class="text-center group">
                     <!-- img -->
                     <div class="relative mb-[18px] overflow-hidden rounded-[12px]">
-                        <img src="{{ course.teacher.image.url }}" alt="instructor image"
-                            class="w-full aspect-[270/320] object-cover group-hover:scale-110">
-                        <!-- socials -->
+                        {% if teacher.image %}
+                        <img src="{{ teacher.image.url }}" alt="instructor image" class="w-full aspect-[270/320] object-cover group-hover:scale-110">
+                        {% else %}
+                        <img src="/static/img/instructor-{{ forloop.counter }}.jpg" alt="instructor image 2" class="w-full aspect-[270/320] object-cover group-hover:scale-110">
+                        {% endif %}
                         <div
                             class="et-member-socials absolute right-[20px] md:right-[15px] top-[20px] md:top-[15px] z-[1]">
                             <div
@@ -562,16 +553,14 @@
 
                     <!-- txt -->
                     <div>
-                        <h6 class="font-semibold text-[18px] text-edblue mb-[12px]"><a href="teacher-details.html"
-                                class="hover:text-edyellow">{{course.teacher}}</a></h6>
+                        <h6 class="font-semibold text-[18px] text-edblue mb-[12px]">
+                            <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edyellow">{{teacher}}</a>
+                        </h6>
                     </div>
                 </div>
                 {% endfor %}
                 
             </div>
-            
-
-            <!-- vectors -->
             <div class="lg:hidden">
                 <div
                     class="pointer-events-none w-[434px] aspect-square rounded-full bg-edpurple/15 absolute -z-[1] top-0 left-[56px] -translate-y-[50%]">
@@ -586,10 +575,6 @@
         </div>
     </section>
     <!-- INSTRUCTORS SECTION END -->
-
-
-    
-
     <!-- STATS SECTION START -->
     <section class="py-[80px] bg-edblue">
         <div class="mx-[19.7%] xxxl:mx-[14.7%] xxl:mx-[9.7%] xl:mx-[3.2%] md:mx-[15px]">
@@ -599,7 +584,7 @@
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-2.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]" style="color: azure;">{{courses_count}}+</h3>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">{{ course_count }}+</h3>
                     <h6 class="font-medium" style="color: azure;">Class Completed</h6>
                 </div>
 
@@ -607,7 +592,7 @@
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-3.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]" style="color: azure;">100+</h3>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">{{ teacher_count }}+</h3>
                     <h6 class="font-medium" style="color: azure;">Experts Instructors</h6>
                 </div>
 
@@ -615,7 +600,7 @@
                 <div
                     class="text-white text-center md:w-[45%] shrink-0 pr-[80px] lg:pr-[60px] last:pr-0 border-r border-white/20 last:border-0 md:even:pr-0 md:even:border-r-0 xs:pr-0 xs:border-r-0">
                     <img src="{% static 'img/stat-4.png' %}" alt="icon" class="w-max max-w-full mx-auto mb-[7px]">
-                    <h3 class="font-bold text-[36px]" style="color: azure;">{{users_count}}+</h3>
+                    <h3 class="font-bold text-[36px]" style="color: azure;">{{ student_count }}+</h3>
                     <h6 class="font-medium" style="color: azure;">Students Enrolled</h6>
                 </div>
             </div>

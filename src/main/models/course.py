@@ -1,6 +1,7 @@
 import uuid
 import random
 import string
+import math
 
 from django.utils.translation import gettext_lazy as _
 from django.db import models
@@ -63,11 +64,18 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
         today = timezone.now().date()
         return self.discount_starts_at <= today <= self.discount_ends_at
     
-    def duration(self):
+    @property
+    def duration(self) -> int:
         duration = 0
         for lesson in self.lessons.all():
             duration += lesson.duration
         return duration
+    
+    def duration_format(self) -> str:
+        minutes = math.floor(self.duration / 60)
+        seconds = self.duration % 60
+        hours = math.floor(minutes / 60)
+        return f'{hours}:{minutes:02d}:{seconds:02d}' if hours > 0 else f'{minutes}:{seconds:02d}'
     
 
 @receiver(pre_save, sender=Course)

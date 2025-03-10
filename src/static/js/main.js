@@ -20,24 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const edSidebar = document.querySelector(".ed-sidebar");
     const edSidebarOpenBtn = document.querySelector(".ed-header-sidebar-open-btn");
     const edSidebarCloseBtn = document.querySelector(".ed-sidebar-close-btn");
-    const edOverlay = document.querySelector(".ed-overlay");
+    //const edOverlay = document.querySelector(".ed-overlay");
 
     if (edSidebarOpenBtn) {
         edSidebarOpenBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             edSidebar.classList.add("active");
-            edOverlay.classList.add("active");
+            //edOverlay.classList.add("active");
         });
     }
     edSidebarCloseBtn.addEventListener("click", () => {
         edSidebar.classList.remove("active");
-        edOverlay.classList.remove("active");
+        //edOverlay.classList.remove("active");
     });
 
     document.addEventListener("click", (e) => {
         if (!edSidebar.contains(e.target) && edSidebar.classList.contains("active")) {
             edSidebar.classList.remove("active");
-            edOverlay.classList.remove("active");
+            //edOverlay.classList.remove("active");
         }
     });
     // SIDEBAR JS END
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const edMobileMenuOpenBtn = document.querySelector(".ed-mobile-menu-open-btn");
     const edMobileMenuContents = document.querySelectorAll(".to-go-to-sidebar-in-mobile");
     const edMobileMenuContainer = document.querySelector(".ed-header-nav-in-mobile");
-    const edHeaderNavContainer = document.querySelector(".ed-header-nav-container");
+    //const edHeaderNavContainer = document.querySelector(".ed-header-nav-container");
     const edHeaderNav = document.querySelectorAll(".ed-header-nav li");
     if (window.innerWidth < 1200) {
         edHeaderNav.forEach(edHeaderNavItem => {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     edMobileMenuOpenBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         edSidebar.classList.add("active");
-        edOverlay.classList.add("active");
+        //edOverlay.classList.add("active");
     });
     // MOBILE MENU SIDEBAR
 
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (edCartOpenerBtn) {
         edCartOpenerBtn.addEventListener("click", () => {
             edCart.classList.add("active");
-            edOverlay.classList.add("active");
+            //edOverlay.classList.add("active");
             document.body.style.overflow = "hidden";
         });
     };
@@ -250,27 +250,27 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
         if (!edCart.contains(e.target) && edCart.classList.contains("active") && !edCartOpenerBtn.contains(e.target)) {
             edCart.classList.remove("active");
-            edOverlay.classList.remove("active");
+            //edOverlay.classList.remove("active");
             document.body.style.overflow = "";
         }
     });
 
     // search js
-    const edSearchOpenerBtn = document.querySelector(".ed-search-opener-btn");
-    const edSearch = document.querySelector(".ed-search");
+    //const edSearchOpenerBtn = document.querySelector(".ed-search-opener-btn");
+    //const edSearch = document.querySelector(".ed-search");
 
 
-    if (edSearchOpenerBtn) {
-        edSearchOpenerBtn.addEventListener("click", () => {
-            edSearch.classList.add("active");
-            edOverlay.classList.add("active");
-        });
-    };
+    // if (edSearchOpenerBtn) {
+    //     edSearchOpenerBtn.addEventListener("click", () => {
+    //         edSearch.classList.add("active");
+    //         edOverlay.classList.add("active");
+    //     });
+    // };
 
-    document.addEventListener("click", (e) => {
-        if (!edSearch.contains(e.target) && edSearch.classList.contains("active") && !edSearchOpenerBtn.contains(e.target)) {
-            edSearch.classList.remove("active");
-            edOverlay.classList.remove("active");
-        }
-    });
+    // document.addEventListener("click", (e) => {
+    //     if (!edSearch.contains(e.target) && edSearch.classList.contains("active") && !edSearchOpenerBtn.contains(e.target)) {
+    //         edSearch.classList.remove("active");
+    //         edOverlay.classList.remove("active");
+    //     }
+    // });
 });

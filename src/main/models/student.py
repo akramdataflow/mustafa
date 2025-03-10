@@ -1,7 +1,14 @@
+import uuid
+
 from django.db import models
 from django.conf import settings
 
 from autoslug import AutoSlugField
+
+
+def file_upload(instance, filename):
+    file_name, extension = filename.split('.')
+    return f"teachers/{uuid.uuid4().hex}_{file_name}.{extension}"
 
 
 class Student(models.Model):
@@ -14,7 +21,7 @@ class Student(models.Model):
     slug = AutoSlugField(populate_from='name', unique=True)
     email = models.EmailField(max_length=254)
     bio = models.TextField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to=file_upload)
 
     def __str__(self):
         return self.name

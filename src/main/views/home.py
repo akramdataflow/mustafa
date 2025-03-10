@@ -1,13 +1,18 @@
 from django.shortcuts import render
 
-from main.models import Course
+from main.models import Course, Teacher, Student
 from django.contrib.auth.models import User
 
 
 def home_view(request):
     courses = Course.objects.all()
-    users = User.objects.all()
-    users_count = users.count()
-    courses_count = courses.count()
-    context = {'courses':courses, 'users':users, 'users_count':users_count, 'courses_count':courses_count}
+    teachers = Teacher.objects.all()
+    context = {
+        'courses':courses, 
+        'teachers': teachers,
+        'teacher_count': teachers.count(), 
+        'student_count': Student.objects.count(), 
+        'course_count':courses.count(),
+    }
     return render(request, 'home.html', context)
+
