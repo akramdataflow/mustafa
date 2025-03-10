@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+<section class="py-[120px] xl:py-[80px] md:py-[60px] text-center">
+    <div class="container mx-auto max-w-[500px] px-[12px]">
+        <h2 class="text-[40px] md:text-[35px] sm:text-[30px] xxs:text-[28px] font-semibold text-edblue mb-[20px]">Login</h2>
+        <form action="#" method="POST" class="space-y-[20px] text-[16px]">
+            {% csrf_token %}
+            <div>
+                <label for="login-email" class="font-semibold text-edblue block mb-[8px]">Email*</label>
+                <input type="email" name="email" id="login-email" required placeholder="Your Email" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
+            </div>
+            <div>
+                <label for="login-password" class="font-semibold text-edblue block mb-[8px]">Password*</label>
+                <input type="password" name="password" id="login-password" required placeholder="Enter Password" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
+            </div>
+            <div>
+                <button type="submit" class="bg-edpurple h-[50px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue w-full">Login</button>
+            </div>
+        </form>
+        <p class="mt-[20px] text-edgray">Don't have an account? <a href="{% url 'signup' %}" class="text-edpurple font-medium">Sign Up</a></p>
+    </div>
+</section>
+{% endblock body %}

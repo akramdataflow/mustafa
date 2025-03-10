@@ -71,27 +71,27 @@ class Command(BaseCommand):
 
         if not Teacher.objects.count():
             Teacher.objects.bulk_create([
-                Teacher(name='Richard Hendricks', email='teacher1@mit.edu.co.uk', user=User.objects.get(username='teacher1')),
-                Teacher(name='Mathieu Zanardini', email='teacher2@mit.edu.co.uk', user=User.objects.get(username='teacher2')),
-                Teacher(name='Erik Brynroflsson', email='teacher3@mit.edu.co.uk', user=User.objects.get(username='teacher3')),
+                Teacher(name='Richard Hendricks', email='teacher1@mit.edu.co.uk', phone_number="964222222221", user=User.objects.get(username='teacher1')),
+                Teacher(name='Mathieu Zanardini', email='teacher2@mit.edu.co.uk', phone_number="964222222222", user=User.objects.get(username='teacher2')),
+                Teacher(name='Erik Brynroflsson', email='teacher3@mit.edu.co.uk', phone_number="964222222223", user=User.objects.get(username='teacher3')),
             ])
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample teachers'))
 
         if not Student.objects.count():
             Student.objects.bulk_create([
-                Student(name='Johnathan Gates', email='student1@example.com', user=User.objects.get(username='student1')),
-                Student(name='Miragh Alhassan', email='student2@example.com', user=User.objects.get(username='student2')),
-                Student(name='Stevan Lopez', email='student3@example.com', user=User.objects.get(username='student3')),
-                Student(name='Christopher Nolan', email='student4@example.com', user=User.objects.get(username='student4')),
-                Student(name='Neil Harbour', email='student5@example.com', user=User.objects.get(username='student5')),
-                Student(name='Mark Lee', email='student6@example.com', user=User.objects.get(username='student6')),
-                Student(name='Nathan Smith', email='student7@example.com', user=User.objects.get(username='student7')),
-                Student(name='William Henry', email='student8@example.com', user=User.objects.get(username='student8')),
-                Student(name='Karthik Kumar', email='student9@example.com', user=User.objects.get(username='student9')),
-                Student(name='Eric Ries', email='student10@example.com', user=User.objects.get(username='student10')),
-                Student(name='Sundar Pichai', email='student11@example.com', user=User.objects.get(username='student11')),
-                Student(name='Manapreet Singh', email='student12@example.com', user=User.objects.get(username='student12')),
+                Student(name='Johnathan Gates', email='student1@example.com', phone_number='964111111111', user=User.objects.get(username='student1')),
+                Student(name='Miragh Alhassan', email='student2@example.com', phone_number='964111111112', user=User.objects.get(username='student2')),
+                Student(name='Stevan Lopez', email='student3@example.com', phone_number='964111111113', user=User.objects.get(username='student3')),
+                Student(name='Christopher Nolan', email='student4@example.com', phone_number='964111111114', user=User.objects.get(username='student4')),
+                Student(name='Neil Harbour', email='student5@example.com', phone_number='964111111115', user=User.objects.get(username='student5')),
+                Student(name='Mark Lee', email='student6@example.com', phone_number='964111111116', user=User.objects.get(username='student6')),
+                Student(name='Nathan Smith', email='student7@example.com', phone_number='964111111117', user=User.objects.get(username='student7')),
+                Student(name='William Henry', email='student8@example.com', phone_number='964111111118', user=User.objects.get(username='student8')),
+                Student(name='Karthik Kumar', email='student9@example.com', phone_number='964111111119', user=User.objects.get(username='student9')),
+                Student(name='Eric Ries', email='student10@example.com', phone_number='964111111120', user=User.objects.get(username='student10')),
+                Student(name='Sundar Pichai', email='student11@example.com', phone_number='96411111121', user=User.objects.get(username='student11')),
+                Student(name='Manapreet Singh', email='student12@example.com', phone_number='96411111122', user=User.objects.get(username='student12')),
             ])
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample students'))

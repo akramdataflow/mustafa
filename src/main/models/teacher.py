@@ -21,6 +21,7 @@ class Teacher(models.Model):
     email = models.EmailField(max_length=254)
     bio = models.TextField()
     image = models.ImageField(upload_to=file_upload)
+    phone_number = models.CharField(max_length=15, unique=True)
 
     def __str__(self):
         return self.name

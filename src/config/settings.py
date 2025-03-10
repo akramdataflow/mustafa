@@ -1,11 +1,15 @@
+from django.contrib.messages import constants as message_constants
 from pathlib import Path
 import os
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default="django-insecure-@+ok!(=bgyt_!w=c5&fl554l9bsmz&d63!gz*7+gwyuj_4q=s-")
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", default=True)
 
 ALLOWED_HOSTS = []
 
@@ -56,8 +60,20 @@ ASGI_APPLICATION = "config.asgi.application"
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+DATABASE_PROD = os.environ.get("DATABASE_PROD", default="0") == "1"
+
 DATABASES = {
     "default": {
+        'OPTIONS': {
+            'options': '-c search_path=public'
+        },
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get('DATABASE_NAME', default='jotun'),
+        "USER": os.environ.get('DATABASE_USER', default='jotun'),
+        "PASSWORD": os.environ.get('DATABASE_PASSWORD', default='ipOm70RVxhBIIfTSOBeL'),
+        "HOST": os.environ.get('DATABASE_HOST', default='127.0.0.1'),
+        "PORT": os.environ.get('DATABASE_PORT', default=5432),
+    } if DATABASE_PROD else {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
@@ -94,8 +110,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR/'media')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'info',
+    message_constants.INFO: 'info',
+    message_constants.SUCCESS: 'success',
+    message_constants.WARNING: 'warning',
+    message_constants.ERROR: 'danger',
+}
 
 SITE_TITLE = "Learning site admin"
 SITE_HEADER = "Learning administration"
 INDEX_TITLE = "Dashboard administration"
+
+
+AUTHENTICATION_BACKENDS = [
+    'main.backends.PhoneEmailUsernameBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
+]
