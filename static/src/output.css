@@ -3549,35 +3549,35 @@ video {
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/banner-bg-1\.jpg\'\)\] {
-  background-image: url('../assets/img/banner-bg-1.jpg');
+  background-image: url('/static/img/banner-bg-1.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/banner-bg-2\.jpg\'\)\] {
-  background-image: url('../assets/img/banner-bg-2.jpg');
+  background-image: url('/static/img/banner-bg-2.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/breadcrumb-bg\.jpg\'\)\] {
-  background-image: url('../assets/img/breadcrumb-bg.jpg');
+  background-image: url('/static/img/breadcrumb-bg.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/class-bg\.png\'\)\] {
-  background-image: url('../assets/img/class-bg.png');
+  background-image: url('/static/img/class-bg.png');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/classes-bg\.jpg\'\)\] {
-  background-image: url('../assets/img/classes-bg.jpg');
+  background-image: url('/static/img/classes-bg.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/coming-soon-bg\.jpg\'\)\] {
-  background-image: url('../assets/img/coming-soon-bg.jpg');
+  background-image: url('/static/img/coming-soon-bg.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/cta-3-bg\.jpg\'\)\] {
-  background-image: url('../assets/img/cta-3-bg.jpg');
+  background-image: url('/static/img/cta-3-bg.jpg');
 }
 
 .bg-\[url\(\'\.\.\/assets\/img\/testimonial-heading-vector\.svg\'\)\] {
-  background-image: url('../assets/img/testimonial-heading-vector.svg');
+  background-image: url('/static/img/testimonial-heading-vector.svg');
 }
 
 .decoration-slice {
@@ -4126,6 +4126,8 @@ video {
 .pt-\[60px\] {
   padding-top: 60px;
 }
+.pt-\[143px\] {padding-top: 143px;}
+.pt-\[127px\] {padding-top: 127px;}
 
 .text-left {
   text-align: left;
@@ -5491,42 +5493,42 @@ video {
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/about-us-bg\.png\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/about-us-bg.png');
+  background-image: url('/static/img/about-us-bg.png');
 }
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/admission-title-vector\.svg\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/admission-title-vector.svg');
+  background-image: url('/static/img/admission-title-vector.svg');
 }
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/banner-2-title-vector\.svg\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/banner-2-title-vector.svg');
+  background-image: url('/static/img/banner-2-title-vector.svg');
 }
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/faeture-bg\.jpg\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/faeture-bg.jpg');
+  background-image: url('/static/img/faeture-bg.jpg');
 }
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/footer-bg\.jpg\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/footer-bg.jpg');
+  background-image: url('/static/img/footer-bg.jpg');
 }
 
 .before\:bg-\[url\(\'\.\.\/assets\/img\/testimonial-img-slider-vector\.svg\'\)\]::before {
   content: var(--tw-content);
-  background-image: url('../assets/img/testimonial-img-slider-vector.svg');
+  background-image: url('/static/img/testimonial-img-slider-vector.svg');
 }
 
 .before\:bg-\[url\(\.\.\/assets\/img\/cta-2-vector\.png\)\]::before {
   content: var(--tw-content);
-  background-image: url(../assets/img/cta-2-vector.png);
+  background-image: url(/static/img/cta-2-vector.png);
 }
 
 .before\:bg-\[url\(\.\.\/assets\/img\/icon\/hamburger\.svg\)\]::before {
   content: var(--tw-content);
-  background-image: url(../assets/img/icon/hamburger.svg);
+  background-image: url(/static/img/icon/hamburger.svg);
 }
 
 .before\:bg-\[length\:100\%_100\%\]::before {
@@ -5656,7 +5658,7 @@ video {
 
 .\*\:before\:bg-\[url\(\.\.\/assets\/img\/icon\/checkmark\.svg\)\] > *::before {
   content: var(--tw-content);
-  background-image: url(../assets/img/icon/checkmark.svg);
+  background-image: url(/static/img/icon/checkmark.svg);
 }
 
 .\*\:before\:bg-\[length\:15px_13px\] > *::before {

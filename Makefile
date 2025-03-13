@@ -22,7 +22,7 @@ endif
 all: clean test install run deploy down
 
 test:
-	PYTHONPATH=src/ python -m pytest tests -vv --show-capture=all
+	PYTHONPATH=. python -m pytest tests -vv --show-capture=all
 
 install:
 	@echo "Installing dependencies"
@@ -32,16 +32,16 @@ install:
 	uv pip install -r pyproject.toml
 
 run:
-	PYTHONPATH=src/ python manage.py runserver 0.0.0.0:8000
+	PYTHONPATH=. python manage.py runserver 0.0.0.0:8000
 
 run_uvicorn:
-	PYTHONPATH=src/ uvicorn config.asgi:application --reload --host 0.0.0.0 --port 8000
+	PYTHONPATH=. uvicorn config.asgi:application --reload --host 0.0.0.0 --port 8000
 
 run_celery:
-	PYTHONPATH=src/ celery -A config worker --max-tasks-per-child 1 -l info
+	PYTHONPATH=. celery -A config worker --max-tasks-per-child 1 -l info
 
 run_channels:
-	PYTHONPATH=src/ daphne config.asgi:application -b 0.0.0.0 -p 9000
+	PYTHONPATH=. daphne config.asgi:application -b 0.0.0.0 -p 9000
 
 run_docker: generate_dot_env
 	docker-compose build
@@ -55,10 +55,10 @@ generate_dot_env:
 	fi
 
 make_migrations:
-	PYTHONPATH=src/ python manage.py makemigrations
+	PYTHONPATH=. python manage.py makemigrations
 
 migrate:
-	PYTHONPATH=src/ python manage.py migrate
+	PYTHONPATH=. python manage.py migrate
 
 clean:
 	$(RM) *.pyc

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% block title %}Contact Us{% endblock title %}
+{% block title %}Sign Up{% endblock title %}
 {% block body %}
-<section style="background-image: url(/static/img/breadcrumb-bg.jpg);" class="pt-[327px] xl:pt-[287px] lg:pt-[237px] sm:pt-[200px] xxs:pt-[180px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('/static/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+<section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
     <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-        <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Contact us</h1>
+        <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Sign Up</h1>
         <ul class="flex items-center justify-center gap-[10px] text-white">
             <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
             <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
-            <li>Contact us</li>
+            <li>Sign Up</li>
         </ul>
     </div>
 
@@ -71,26 +71,30 @@
 
             <!-- right side contact form -->
             <div>
-                <h2 class="text-[40px] md:text-[35px] sm:text-[30px] xxs:text-[28px] font-semibold text-edblue mb-[7px]">Ready to Get Started?</h2>
-                <p class="text-edgray font-normal text-[16px] mb-[38px]">Nullam varius, erat quis iaculis dictum, eros urna varius eros, ut blandit felis odio in turpis. Quisque rhoncus, eros in auctor ultrices,</p>
-
-                <form action="#" class="grid grid-cols-2 xxs:grid-cols-1 gap-[30px] xs:gap-[20px] text-[16px]">
+                <h2 class="text-[40px] md:text-[35px] sm:text-[30px] xxs:text-[28px] font-semibold text-edblue mb-[20px]">Sign Up</h2>
+                <form action="#" method="POST" class="space-y-[20px] text-[16px]">
+                    {% csrf_token %}
                     <div>
-                        <label for="ed-contact-name" class="font-lato font-semibold text-edblue block mb-[12px]">Your Name*</label>
-                        <input type="text" name="name" id="ed-contact-name" placeholder="Your Name" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
+                        <label for="signup-username" class="font-semibold text-edblue block mb-[8px]">Username (Optional)</label>
+                        <input type="text" name="username" id="signup-username" placeholder="Username" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
                     </div>
                     <div>
-                        <label for="ed-contact-email" class="font-lato font-semibold text-edblue block mb-[12px]">Your Email*</label>
-                        <input type="email" name="email" id="ed-contact-email" placeholder="Your Email" class="border border-[#ECECEC] h-[55px] px-[20px] xs:px-[15px] rounded-[4px] w-full focus:outline-none">
-                    </div>
-                    <div class="col-span-2 xxs:col-span-1">
-                        <label for="ed-contact-message" class="font-lato font-semibold text-edblue block mb-[12px]">Your Message*</label>
-                        <textarea name="message" id="ed-contact-message" placeholder="Your Message" class="border border-[#ECECEC] h-[145px] p-[20px] rounded-[4px] w-full focus:outline-none"></textarea>
+                        <label for="signup-email" class="font-semibold text-edblue block mb-[8px]">Email*</label>
+                        <input type="email" name="email" id="signup-email" required placeholder="Your Email" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
                     </div>
                     <div>
-                        <button type="submit" class="bg-edpurple h-[55px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue">Send Message <span class="icon pl-[10px]"><i class="fa-solid fa-arrow-right-long"></i></span></button>
+                        <label for="signup-phone" class="font-semibold text-edblue block mb-[8px]">Phone Number*</label>
+                        <input type="tel" name="phone_number" id="signup-phone" required placeholder="Your Phone Number" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
+                    </div>
+                    <div>
+                        <label for="signup-password" class="font-semibold text-edblue block mb-[8px]">Password*</label>
+                        <input type="password" name="password" id="signup-password" required placeholder="Enter Password" class="border border-[#ECECEC] h-[50px] px-[20px] rounded-[4px] w-full focus:outline-none">
+                    </div>
+                    <div>
+                        <button type="submit" class="bg-edpurple h-[50px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue w-full">Sign Up</button>
                     </div>
                 </form>
+                <p class="mt-[20px] text-edgray">Already have an account? <a href="{% url 'login' %}" class="text-edpurple font-medium">Log in</a></p>
             </div>
         </div>
     </div>
