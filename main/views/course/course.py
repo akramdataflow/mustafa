@@ -18,6 +18,6 @@ def course_details_view(request, slug: str):
         'course': course, 
         'average_rating': average_rating, 
         'num_enrollments':num_enrollments, 
-        'teachers': course.teachers
+        'teachers': course.teachers,
     }
     return render(request, 'course/course_details.html', context)

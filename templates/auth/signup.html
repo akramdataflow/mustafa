@@ -72,7 +72,8 @@
             <!-- right side contact form -->
             <div>
                 <h2 class="text-[40px] md:text-[35px] sm:text-[30px] xxs:text-[28px] font-semibold text-edblue mb-[20px]">Sign Up</h2>
-                <form action="#" method="POST" class="space-y-[20px] text-[16px]">
+                {% include "includes/messages.html" %}
+                <form action="" method="POST" class="space-y-[20px] text-[16px]">
                     {% csrf_token %}
                     <div>
                         <label for="signup-username" class="font-semibold text-edblue block mb-[8px]">Username (Optional)</label>
@@ -98,7 +99,11 @@
                         <button type="submit" class="bg-edpurple h-[50px] px-[24px] rounded-[10px] text-[16px] font-medium text-white hover:bg-edblue w-full">Sign Up</button>
                     </div>
                 </form>
-                <p class="mt-[20px] text-edgray">Already have an account? <a href="{% url 'login' %}" class="text-edpurple font-medium">Log in</a></p>
+                <p class="mt-[20px] text-edgray">
+                    Already have an account?
+                    <button type="button" onclick="window.location.href='{% url 'login' %}'" 
+                    class="bg-white h-[50px] px-[24px] rounded-[10px] font-medium text-edpurple hover:bg-edblue hover:text-white w-full border border-edpurple">Log In</button>
+                </p>
             </div>
         </div>
     </div>

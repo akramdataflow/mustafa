@@ -11,8 +11,9 @@ urlpatterns = [
      path('course/', include(arg=[
           path('teachers/', views.teacher_list_view, name='teachers'),
           path('teachers/<str:slug>/', views.teacher_details_view, name='teacher_details'),
+          path('learning-board/', views.learning_board_view, name='learning_board'),
           path('<str:slug>/', views.course_details_view, name='course_details'),
           path('', views.course_list_view, name='course_list'),
      ])),
-      path('', views.home_view, name='home'),
+     path('', views.home_view, name='home'),
 ]

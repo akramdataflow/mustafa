@@ -85,7 +85,11 @@
                         </g>
                     </svg>
                 </button>
+                {% if user.is_authenticated %}
+                <a href="{% url 'learning_board' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">Learning Board</a>
+                {% else %}
                 <a href="{% url 'signup' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">Join Us</a>
+                {% endif %}
             </div>
         </div>
 
