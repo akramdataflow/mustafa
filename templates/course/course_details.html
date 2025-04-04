@@ -88,7 +88,7 @@
                                                 <!-- left -->
                                                 <div class="flex items-center gap-[10px]">
                                                     <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
-                                                    <span class="text-edblue">{{lesson.name}}</span>
+                                                    <a href="{% url 'lesson_preview' course.slug lesson.slug %}" class="text-edblue">{{lesson.name}}</a>
                                                 </div>
 
                                                 <!-- right -->
@@ -97,37 +97,9 @@
                                                     <span class="icon"><img src="{% static 'img/icon/checkmark.svg' %}" alt=""></span>
                                                 </div>
                                             </div>
+                                            {% empty %}
+                                            <p class="text-edgray">No Lessons Found</p>
                                             {% endfor %}
-
-                                            <!-- single curriculum -->
-                                            <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
-                                                <!-- left -->
-                                                <div class="flex items-center gap-[10px]">
-                                                    <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
-                                                    <span class="text-edblue">Lessons 2: Basic Tool</span>
-                                                </div>
-
-                                                <!-- right -->
-                                                <div class="flex items-center gap-[10px]">
-                                                    <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">7 Minutes</button>
-                                                    <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
-                                                </div>
-                                            </div>
-
-                                            <!-- single curriculum -->
-                                            <div class="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-edpurple/[6%] rounded-[8px]">
-                                                <!-- left -->
-                                                <div class="flex items-center gap-[10px]">
-                                                    <span><img src="{% static 'img/icon/lesson-purple.svg' %}" alt="icon"></span>
-                                                    <span class="text-edblue">Lessons 3: Images optimizes</span>
-                                                </div>
-
-                                                <!-- right -->
-                                                <div class="flex items-center gap-[10px]">
-                                                    <button class="text-[10px] bg-edyellow rounded-[2px] text-white px-[8px] py-[2.5px]">18 Minutes</button>
-                                                    <span class="icon"><img src="{% static 'img/icon/lock.svg' %}" alt=""></span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

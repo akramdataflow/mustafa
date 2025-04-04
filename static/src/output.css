@@ -1679,6 +1679,10 @@ video {
   width: 386px;
 }
 
+.w-\[30\%\] {
+  width: 30%;
+}
+
 .w-\[40\%\] {
   width: 40%;
 }
@@ -6525,6 +6529,13 @@ video {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:w-\[30\%\] {
+    width: 30%;
+  }
+  .lg\:w-\[40\%\] {
+    width: 40%;
   }
 
   .lg\:w-\[100\%\] {

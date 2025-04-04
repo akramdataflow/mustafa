@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load i18n static embed_video_tags %}
+{% block title %}{% trans "Playing" %} | {{ lesson.name }}{% endblock title %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/video-js/video-js.min.css' %}">
+<style>
+.lesson-active {border-left: 4px solid #3b82f6;@apply bg-blue-50 border-blue-200;}
+.video-js .vjs-big-play-button {@apply rounded-full shadow-lg;}
+.list-group-item.active a {color:#fff;font-weight:bold;}
+body > header {display: none !important;}
+</style>
+{% endblock extra_css %}
+{% block body %}
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Video Player Section -->
+    <div class="bg-gray-900 rounded-xl shadow-xl overflow-hidden mb-8">
+        <div class="aspect-w-16 aspect-h-9">
+            {% if lesson.url %}
+                {% video lesson.url '100%x800' %}
+            {% else %}
+                <div class="flex items-center justify-center h-full text-gray-400">
+                    <i class="fas fa-video-slash text-4xl mr-3"></i>
+                    <span class="text-xl">{% trans "No Video Available" %}</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="flex gap-[30px] lg:gap-[20px] md:flex-col md:items-center p-[30px]">
+        <!-- Main Content -->
+        <div class="left max-w-full grow">
+            <!-- Lesson Header -->
+            <div>
+                <h1 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mb-[23px]">{{ lesson.name }}</h1>
+                <div class="border-b border-[#E5E5E5] pb-[25px] flex xs:flex-wrap items-center gap-[60px] lg:gap-[40px] xs:gap-[20px] mb-[34px]">
+                    {% if lesson.duration > 0 %}
+                    <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                        <i class="fas fa-clock mr-2 text-blue-500"></i>
+                        {{ lesson.duration_format }}
+                    </div>
+                    {% endif %}
+                    {% if lesson.size > 0 %}
+                    <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                        <i class="fas fa-database mr-2 text-blue-500"></i>
+                        {{ lesson.size_format }}
+                    </div>
+                    {% endif %}
+                    {% if course.teachers.count > 0 %}
+                    <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                        <i class="fas fa-chalkboard-teacher mr-2 text-blue-500"></i>
+                        {% for teacher in course.teachers.all %}{{ teacher.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if course.category %}
+                    <div class="flex items-center gap-[10px] border-l border-[#CDCDCD] first:border-none pl-[10px] first:pl-0">
+                        <i class="fas fa-tag mr-2 text-blue-500"></i>
+                        {{ course.category.name }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+			<!-- Lesson Description -->
+			<article class="ed-course-details-tabs">
+				<div class="ed-tab duration-[400ms] active">
+					<div>
+						<h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">{% trans "Lesson Overview" %}</h4>
+						<div class="space-y-[10px]">{% if lesson.body %}{{ lesson.body|safe }}{% else %}<span class="text-edgray text-[15px]">{% trans "No Description Available" %}</span>{% endif %}</div>
+					</div>
+					{% if lesson.file %}
+					<div>
+						<h4 class="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] text-edblue mt-[28px] mb-[15px]">{% trans "Download" %}</h4>
+						<div class="space-y-[10px]">
+							<a href="{{ lesson.file.url }}" class="ed-btn gap-[10px] !h-[56px] !rounded-[8px] w-full">{% trans "Download" %} <span><i class="fa-solid fa-download"></i></span></a>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</article>
+        </div>
+
+        <!-- Lesson List -->
+        <aside class="right h-full sticky top-[120px] max-w-full w-[40%] lg:w-[40%] shrink-0 space-y-[30px]">
+            <div class="border border-[#e5e5e5] rounded-[10px] px-[30px] lg:px-[20px] xxs:px-[15px] py-[35px] lg:py-[25px] xxs:py-[25px]">
+				<ul class="mb-[30px]">
+					{% for lesson1 in course.lessons.all %}
+					<li class="{% if lesson1.pk == lesson.pk %}bg-blue-50 border-blue-200{% endif %} py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+						<a href="{% url 'lesson_preview' request.resolver_match.kwargs.course_slug lesson1.slug %}" class="flex items-center gap-[8px] font-semibold text-edblue">
+							<span class="icon">
+								{% if lesson1.pk == lesson.pk %}
+									<i class="fas fa-play-circle"></i>
+								{% else %}
+									<span class="text-gray-400">{{ forloop.counter }}</span>
+								{% endif %}
+							</span>
+							<span class="{% if lesson1.pk == lesson.pk %}font-bold{% endif %}">{{ lesson1.name }}</span>
+						</a>
+						<span class="text-[15px] text-edgray">
+							<i class="far fa-clock mr-1"></i> {{ lesson1.duration_format }}
+						</span>
+					</li>
+					{% endfor %}
+				</ul>
+                <div class="p-4">
+                    <a href="{% url 'course_details' request.resolver_match.kwargs.course_slug %}" 
+                       class="w-full flex items-center justify-center gap-2 text-gray-600 hover:text-blue-500 transition-colors">
+                        <i class="fas fa-arrow-left"></i> &nbsp;&nbsp;&nbsp;{% trans "Back to Course" %}
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+
+{% csrf_token %}
+<input type="hidden" name="shownoteseconds" id="shownoteseconds" value="{% if lesson.video.media_type == 'url' %}false{% else %}true{% endif %}">
+<input type="hidden" name="lesson_slug" id="lesson_slug" value="{{ lesson.slug }}">
+{% endblock body %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'vendor/video-js/video.min.js' %}"></script>
+<script>
+    // Initialize video.js player
+    const player = videojs('lesson-video');
+    player.ready(function() {
+        this.addClass('rounded-xl overflow-hidden');
+    });
+</script>
+{% endblock extra_js %}

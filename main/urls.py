@@ -12,6 +12,7 @@ urlpatterns = [
           path('teachers/', views.teacher_list_view, name='teachers'),
           path('teachers/<str:slug>/', views.teacher_details_view, name='teacher_details'),
           path('learning-board/', views.learning_board_view, name='learning_board'),
+          path('<str:course_slug>/<str:lesson_slug>/preview/', views.lesson_preview_view, name='lesson_preview'),
           path('<str:slug>/', views.course_details_view, name='course_details'),
           path('', views.course_list_view, name='course_list'),
      ])),

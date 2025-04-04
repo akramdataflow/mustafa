@@ -21,3 +21,12 @@ def course_details_view(request, slug: str):
         'teachers': course.teachers,
     }
     return render(request, 'course/course_details.html', context)
+
+
+def lesson_preview_view(request, course_slug: str, lesson_slug: str):
+    course = get_object_or_404(Course, slug=course_slug)
+    context = {
+        'course': course,
+        'lesson': course.lessons.filter(slug=lesson_slug).first()
+    }
+    return render(request, 'course/lesson_preview.html', context)
