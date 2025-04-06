@@ -1,11 +1,13 @@
 import uuid
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 from django.db import models
 from core.models import TimeStampedModel, UniqueIdentifierModel
 
 from autoslug import AutoSlugField
 from django.dispatch import receiver
 from django.db.models.signals import pre_save
+from embed_video.fields import EmbedVideoField
 import mimetypes
 import math
 import moviepy.editor
@@ -18,8 +20,8 @@ def file_upload(instance, filename):
 
 class Lesson(TimeStampedModel, UniqueIdentifierModel):
     class Meta:
-        verbose_name = 'Lesson'
-        verbose_name_plural = 'Lessons'
+        verbose_name = _('Lesson')
+        verbose_name_plural = _('Lessons')
         ordering = ('order',)
 
     LOCAL = 'local'
@@ -48,7 +50,7 @@ class Lesson(TimeStampedModel, UniqueIdentifierModel):
     slug = AutoSlugField(populate_from='name', unique=True)
     body = models.TextField(_("Body"), blank=True, null=True)
     file = models.FileField(_("File"), upload_to=file_upload, blank=True, null=True)
-    url = models.URLField(_("URL"), blank=True, null=True)
+    url = EmbedVideoField(_("URL"), blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
     is_preview = models.BooleanField(default=False)
     size = models.PositiveIntegerField(_("File Size"), default=0)
@@ -115,4 +117,17 @@ def set_media_type(sender, instance, **kwargs):
         instance.save()
         
 
+class LessonProgress(TimeStampedModel):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='progress')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_progress')
+    current = models.PositiveBigIntegerField(default=0)
+    complete = models.PositiveBigIntegerField(default=60)
+    is_completed = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = _('Lesson Progress')
+        verbose_name_plural = _('Lessons Progress')
+        unique_together = ('lesson', 'user')
     
+    def progress(self) -> int:
+        return (self.current / self.complete) * 100

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n humanize %}
 {% block title %}Courses{% endblock title %}
 {% block body %}
 <div class="ed-overlay group">
@@ -25,11 +25,11 @@
 <main>
     <section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
         <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Courses</h1>
+            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">{% translate 'Courses' %}</h1>
             <ul class="flex items-center justify-center gap-[10px] text-white">
-                <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+                <li><a href="{% url 'home' %}" class="text-edyellow">{% translate 'Home' %}</a></li>
                 <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
-                <li>Courses</li>
+                <li>{% translate 'Courses' %}</li>
             </ul>
         </div>
         <div class="vectors">
@@ -51,13 +51,13 @@
                     </div>
                     <div class="flex justify-between items-center mb-[16px]">
                         <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">{{ course.level }}</span>
-                        <span class="text-edpurple font-semibold text-[20px]">{{ course.price }} {{ course.currency.code3 }}</span>
+                        <span class="text-edpurple font-semibold text-[20px]">{% if course.get_total_price > 0 %}{{ course.get_total_price|floatformat:2|intcomma }} {{ course.currency.code3 }} {% else %} {% trans "Free" %} {% endif %}</span>
                     </div>
                     <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.slug %}" class="hover:text-edpurple">{{ course.name }}</a></h5>
                     <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
                         <div class="flex items-center gap-[8px] text-[14px] text-edgray">
                             <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
-                            <span class="txt">{{ course.lessons.count }} Lesson</span>
+                            <span class="txt">{{ course.lessons.count }} {% trans "Lessons" %}</span>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">

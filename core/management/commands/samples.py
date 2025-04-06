@@ -3,6 +3,7 @@ import os
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from core.models import Currency
 from main.models import Category, Course, Lesson, Review, Teacher, Student
@@ -29,6 +30,8 @@ class Command(BaseCommand):
             User.objects.create_user('teacher1', 'teacher1@example.com', 'teacher111111')
             User.objects.create_user('teacher2', 'teacher2@example.com', 'teacher211111')
             User.objects.create_user('teacher3', 'teacher3@example.com', 'teacher311111')
+            User.objects.create_user('teacher4', 'teacher4@example.com', 'teacher411111')
+            User.objects.create_user('teacher5', 'teacher5@example.com', 'teacher511111')
             # create studens
             User.objects.create_user(username='student1', email='student1@example.com', password='student111111')
             User.objects.create_user(username='student2', email='student2@example.com', password='student211111')
@@ -73,27 +76,31 @@ class Command(BaseCommand):
 
         if not Teacher.objects.count():
             Teacher.objects.bulk_create([
+                Teacher(name='Mustafa Nail', email='teacher0@example.com', phone_number='964222222220', user=User.objects.get(username='admin')),
                 Teacher(name='Richard Hendricks', email='teacher1@mit.edu.co.uk', phone_number="964222222221", user=User.objects.get(username='teacher1')),
                 Teacher(name='Mathieu Zanardini', email='teacher2@mit.edu.co.uk', phone_number="964222222222", user=User.objects.get(username='teacher2')),
                 Teacher(name='Erik Brynroflsson', email='teacher3@mit.edu.co.uk', phone_number="964222222223", user=User.objects.get(username='teacher3')),
+                Teacher(name='Gustavo Grinberg', email='teacher4@mit.edu.co.uk', phone_number="964222222224", user=User.objects.get(username='teacher4')),
+                Teacher(name='Nathan Yaugen Henry', email='teacher5@mit.edu.co.uk', phone_number="964222222225", user=User.objects.get(username='teacher5')),
             ])
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample teachers'))
 
         if not Student.objects.count():
             Student.objects.bulk_create([
-                Student(name='Johnathan Gates', email='student1@example.com', phone_number='964111111111', user=User.objects.get(username='student1')),
-                Student(name='Miragh Alhassan', email='student2@example.com', phone_number='964111111112', user=User.objects.get(username='student2')),
-                Student(name='Stevan Lopez', email='student3@example.com', phone_number='964111111113', user=User.objects.get(username='student3')),
-                Student(name='Christopher Nolan', email='student4@example.com', phone_number='964111111114', user=User.objects.get(username='student4')),
-                Student(name='Neil Harbour', email='student5@example.com', phone_number='964111111115', user=User.objects.get(username='student5')),
-                Student(name='Mark Lee', email='student6@example.com', phone_number='964111111116', user=User.objects.get(username='student6')),
-                Student(name='Nathan Smith', email='student7@example.com', phone_number='964111111117', user=User.objects.get(username='student7')),
-                Student(name='William Henry', email='student8@example.com', phone_number='964111111118', user=User.objects.get(username='student8')),
-                Student(name='Karthik Kumar', email='student9@example.com', phone_number='964111111119', user=User.objects.get(username='student9')),
-                Student(name='Eric Ries', email='student10@example.com', phone_number='964111111120', user=User.objects.get(username='student10')),
-                Student(name='Sundar Pichai', email='student11@example.com', phone_number='96411111121', user=User.objects.get(username='student11')),
-                Student(name='Manapreet Singh', email='student12@example.com', phone_number='96411111122', user=User.objects.get(username='student12')),
+                Student(name='Mustafa Nail', email='student0@example.com', phone_number='964111111110', user=User.objects.get(username='admin'), birth_date='2000-01-01'),
+                Student(name='Johnathan Gates', email='student1@example.com', phone_number='964111111111', user=User.objects.get(username='student1'), birth_date='2000-01-01'),
+                Student(name='Miragh Alhassan', email='student2@example.com', phone_number='964111111112', user=User.objects.get(username='student2'), birth_date='2000-01-01'),
+                Student(name='Stevan Lopez', email='student3@example.com', phone_number='964111111113', user=User.objects.get(username='student3'), birth_date='2000-01-01'),
+                Student(name='Christopher Nolan', email='student4@example.com', phone_number='964111111114', user=User.objects.get(username='student4'), birth_date='2000-01-01'),
+                Student(name='Neil Harbour', email='student5@example.com', phone_number='964111111115', user=User.objects.get(username='student5'), birth_date='2000-01-01'),
+                Student(name='Mark Lee', email='student6@example.com', phone_number='964111111116', user=User.objects.get(username='student6'), birth_date='2000-01-01'),
+                Student(name='Nathan Smith', email='student7@example.com', phone_number='964111111117', user=User.objects.get(username='student7'), birth_date='2000-01-01'),
+                Student(name='William Henry', email='student8@example.com', phone_number='964111111118', user=User.objects.get(username='student8'), birth_date='2000-01-01'),
+                Student(name='Karthik Kumar', email='student9@example.com', phone_number='964111111119', user=User.objects.get(username='student9'), birth_date='2000-01-01'),
+                Student(name='Eric Ries', email='student10@example.com', phone_number='964111111120', user=User.objects.get(username='student10'), birth_date='2000-01-01'),
+                Student(name='Sundar Pichai', email='student11@example.com', phone_number='96411111121', user=User.objects.get(username='student11'), birth_date='2000-01-01'),
+                Student(name='Manapreet Singh', email='student12@example.com', phone_number='96411111122', user=User.objects.get(username='student12'), birth_date='2000-01-01'),
             ])
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample students'))
@@ -102,33 +109,59 @@ class Command(BaseCommand):
             Course.objects.bulk_create([
                 Course(
                     name='Introduction to Python', 
-                    body='Python is the most popular programming language', 
                     image=os.path.join('images', 'course', 'python.jpg'), 
                     category=Category.objects.get(name='Development'), 
                     price=1000.00, 
                     currency=Currency.objects.get(code='IQD'),
+                    body='Python is the most popular programming language, created by Guido van Rossum, used for AI and web development.',
+                    requirements='You should have basic knowledge of programming and mathematics',
                 ),
                 Course(
                     name='Introduction to Django', 
-                    body='Django is the most popular web framework', 
                     image=os.path.join('images', 'course', 'django.jpg'), 
                     category=Category.objects.get(name='Development'), 
-                    price=1000.00, 
+                    price=2000.00, 
                     currency=Currency.objects.get(code='IQD'),
+                    body='Django is the most popular web framework, created by Django Software Foundation, used for building web applications',
+                    requirements='You should have basic knowledge of python language and web development',
                 ),
                 Course(
-                    name='Introduction to React', 
-                    body='React is the most popular frontend framework', 
+                    name='React the best practice', 
                     image=os.path.join('images', 'course', 'react.jpg'), 
                     category=Category.objects.get(name='Development'), 
-                    price=1000.00, 
+                    price=1500.00, 
                     currency=Currency.objects.get(code='IQD'),
+                    body='React is the most popular frontend framework, created by Facebook',
+                    requirements='You should have basic knowledge of javascript language and web development',
                 ),
+                Course(
+                    name='Java Programming', 
+                    image=os.path.join('images', 'course', 'java.jpg'), 
+                    category=Category.objects.get(name='Development'), 
+                    price=0.00,
+                    currency=Currency.objects.get(code='IQD'),
+                    body='Java is the most popular programming language, created by Sun Microsystems, used primarily for desktop and mobile applications',
+                    requirements='You should have basic knowledge of programming, algorithms and data structures',
+                ),
+                Course(
+                    name='AI and ML Basics',
+                    image=os.path.join('images', 'course', 'ai.jpg'),
+                    category=Category.objects.get(name='Development'),
+                    discount=100,
+                    price=1200.00,
+                    discount_starts_at=timezone.now().date(),
+                    discount_ends_at=timezone.now().date() + timezone.timedelta(days=60),
+                    currency=Currency.objects.get(code='IQD'),
+                    body='Artificial Intelligence and Machine Learning is the technology that allows machines to learn and make predictions based on data.',
+                    requirements='You should have good knowledge of Python programming and mathematics.',
+                )
             ])
             # set teachers m2m field
             Course.objects.get(name='Introduction to Python').teachers.add(Teacher.objects.get(user__username='teacher1'))
             Course.objects.get(name='Introduction to Django').teachers.add(Teacher.objects.get(user__username='teacher2'))
-            Course.objects.get(name='Introduction to React').teachers.add(Teacher.objects.get(user__username='teacher3'))
+            Course.objects.get(name='React the best practice').teachers.add(Teacher.objects.get(user__username='teacher3'))
+            Course.objects.get(name='Java Programming').teachers.add(Teacher.objects.get(user__username='teacher4'))
+            Course.objects.get(name='AI and ML Basics').teachers.add(Teacher.objects.get(user__username='teacher5'))
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample courses'))
 
@@ -175,7 +208,7 @@ class Command(BaseCommand):
             ])
 
             # create lessons for react course
-            course3 = Course.objects.get(name='Introduction to React')
+            course3 = Course.objects.get(name='React the best practice')
             Lesson.objects.bulk_create([
                 Lesson(name='Installing React', url='https://www.youtube.com/watch?v=yOAZDymGWVw', order=1, course=course3),
                 Lesson(name='Components', url='https://www.youtube.com/watch?v=Y2hgEGPzTZY', order=2, course=course3),
@@ -186,6 +219,54 @@ class Command(BaseCommand):
                 Lesson(name='APIs', url='https://www.youtube.com/watch?v=00lxm_doFYw', order=7, course=course3),
                 Lesson(name='Testing', url='https://www.youtube.com/watch?v=8Xwq35cPwYg', order=8, course=course3),
                 Lesson(name='Deployment', url='https://www.youtube.com/watch?v=KFwFDZpEzXY', order=9, course=course3),
+            ])
+
+            # create lessons for java course
+            course4 = Course.objects.get(name='Java Programming')
+            Lesson.objects.bulk_create([
+                Lesson(name='Why take this Java Course?', url='https://www.youtube.com/watch?v=VHbSopMyc4M', order=1, course=course4),
+                Lesson(name='Programs and Programming Languages', url='https://www.youtube.com/watch?v=-C88r0niLQQ', order=2, course=course4),
+                Lesson(name='Introduction to Java Programming', url='https://www.youtube.com/watch?v=mG4NLNZ37y4', order=3, course=course4),
+                Lesson(name='Anatomy of Java Program', url='https://www.youtube.com/watch?v=vsxYucdzimA', order=4, course=course4),
+                Lesson(name='Displaying Messages in Java', url='https://www.youtube.com/watch?v=ifirpBZLeCk', order=5, course=course4),
+                Lesson(name='Displaying Numbers in Java', url='https://www.youtube.com/watch?v=UFMqdnUh4nI', order=6, course=course4),
+                Lesson(name='Configuring our Java Development Environment', url='https://www.youtube.com/watch?v=FjGMYpXS9iE', order=7, course=course4),
+                Lesson(name='Creating, Compiling, and Executing a Java Program', url='https://www.youtube.com/watch?v=gHXzyAkbUhk', order=8, course=course4),
+                Lesson(name='Our First Java Project', url='https://www.youtube.com/watch?v=AVpLMoTnwM8', order=9, course=course4),
+                Lesson(name='Java Packages, Classes, and Methods', url='https://www.youtube.com/watch?v=mgixJYEZ1Fk', order=10, course=course4),
+                Lesson(name='public, private, and static in Java', url='https://www.youtube.com/watch?v=SITEc4DWwsQ', order=11, course=course4),
+                Lesson(name='The void Return Type in Java', url='https://www.youtube.com/watch?v=14Cfx3fpH-w', order=12, course=course4),
+                Lesson(name='Command Line Arguments in Java', url='https://www.youtube.com/watch?v=Up17-azeuyE', order=13, course=course4),
+                Lesson(name='Programming Styles', url='https://www.youtube.com/watch?v=OXYT01qrDrc', order=14, course=course4),
+                Lesson(name='Programming Errors', url='https://www.youtube.com/watch?v=dPQaQWyqYoc', order=15, course=course4),
+                Lesson(name='Java Exercise - Creating Classes & Methods', url='https://www.youtube.com/watch?v=-94U78VoufQ', order=16, course=course4),
+                Lesson(name='Java Basics - An Overview', url='https://www.youtube.com/watch?v=doxwM_gVc90', order=17, course=course4),
+                Lesson(name='Introduction to Variables in Java', url='https://www.youtube.com/watch?v=N8LDSryePuc', order=18, course=course4),
+                Lesson(name='Variables in Java - Practice', url='https://www.youtube.com/watch?v=Ls14YnfR7Hg', order=19, course=course4),
+                Lesson(name='Constants in Java', url='https://www.youtube.com/watch?v=Ccc-Sk8qMAQ', order=20, course=course4),
+            ])
+
+            # create lessons for ai course
+            course5 = Course.objects.get(name='AI and ML Basics')
+            Lesson.objects.bulk_create([
+                Lesson(name='The Rise of Generative AI for Business', url='https://www.youtube.com/watch?v=s4r5gXdSVPM', order=1, course=course5),
+                Lesson(name='Become a value creator with generative AI', url='https://www.youtube.com/watch?v=fBR42OxjWaM', order=2, course=course5),
+                Lesson(name='Why foundation models are a paradigm shift for AI', url='https://www.youtube.com/watch?v=1JzMSbcInxc', order=3, course=course5),
+                Lesson(name='Trust, transparency, and governance in the age of generative AI', url='https://www.youtube.com/watch?v=odrD0OLPeiY', order=4, course=course5),
+                Lesson(name='Putting AI to work for Customer Service', url='https://www.youtube.com/watch?v=_3-ZOKKo7II', order=5, course=course5),
+                Lesson(name='Putting AI to Work for Application Modernization', url='https://www.youtube.com/watch?v=AINoTKMZSGI', order=6, course=course5),
+                Lesson(name='Is data management the secret to generative AI?', url='https://www.youtube.com/watch?v=qtuzVc0N5o0', order=7, course=course5),
+                Lesson(name='Putting AI to Work for Marketing', url='https://www.youtube.com/watch?v=c54qSfmTT5U', order=8, course=course5),
+                Lesson(name='Putting AI to Work for talent', url='https://www.youtube.com/watch?v=MZmJTnjJd7Y', order=9, course=course5),
+                Lesson(name='Select the right AI use case for your business', url='https://www.youtube.com/watch?v=C1ecR-sIE1A', order=10, course=course5),
+                Lesson(name='How responsible AI can prepare you for AI regulations', url='https://www.youtube.com/watch?v=n0WapyCr0tk', order=11, course=course5),
+                Lesson(name='Choose the right AI model for your use case', url='https://www.youtube.com/watch?v=aqWXSShwGO0', order=12, course=course5),
+                Lesson(name='From pilot to production: Driving ROI with genAI', url='https://www.youtube.com/watch?v=FtYKoDomUp8', order=13, course=course5),
+                Lesson(name='Achieving AI-readiness with hybrid cloud', url='https://www.youtube.com/watch?v=vI_2LSc6NCg', order=14, course=course5),
+                Lesson(name='Putting AI to work in IT Operations', url='https://www.youtube.com/watch?v=4VCwKSaMOqY', order=15, course=course5),
+                Lesson(name='Design a hybrid cloud infrastructure for and with AI', url='https://www.youtube.com/watch?v=6-s_fUXP0FM', order=16, course=course5),
+                Lesson(name='Putting AI to work for Finance', url='https://www.youtube.com/watch?v=kNXOCsL9OF8', order=17, course=course5),
+                Lesson(name='How business leaders budget for generative AI', url='https://www.youtube.com/watch?v=anirI6Xtezs', order=18, course=course5),
             ])
 
             self.stdout.write(self.style.SUCCESS('Successfully created sample lessons'))

@@ -21,9 +21,6 @@
             </div>
             {% empty %}
             <p class="p-[25px] text-center text-edgray">{% trans "Your cart is empty" %}</p>
-            <p class="text-center">
-                <a href="{% url 'course_list' %}" class="ed-btn !rounded-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">{% trans "Browse Courses" %}</a>
-            </p>
             {% endfor %}
         </div>
 
@@ -33,9 +30,17 @@
                 <span>{% trans "Total" %}</span>
                 <span>{{ cart.get_total_price|floatformat:2|intcomma }} {{ cart.get_currency.code3 }}</span>
             </div>
+            {% if cart.items.exists %}
             <div class="space-y-[15px]">
-                <a href="#" class="ed-btn w-full !rounded-[10px]">{% trans "Proceed to checkout" %}</a>
+                <form action="{% url 'payment_page' %}" method="post">{% csrf_token %}
+                    <button type="submit" class="ed-btn w-full !rounded-[10px]">{% trans "Proceed to checkout" %}</button>
+                </form>
             </div>
+            {% else %}
+            <div class="space-y-[15px]">
+                <a href="{% url 'course_list' %}" class="ed-btn w-full !rounded-[10px]">{% trans "Browse Courses" %}</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -24,6 +24,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    quantity = 1
 
     def __str__(self):
         return f"CartItem - {self.cart} - {self.course}"

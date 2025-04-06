@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}{% trans "Payment Cancelled" %}{% endblock title %}
+{% block body %}
+<section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
+    <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
+        <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">{% trans 'Payment Cancelled' %}</h1>
+        <ul class="flex items-center justify-center gap-[10px] text-white">
+            <li><a href="{% url 'home' %}" class="text-edyellow">{% trans 'Home' %}</a></li>
+            <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
+            <li>{% trans 'Payment Cancelled' %}</li>
+        </ul>
+    </div>
+
+    <div class="vectors">
+        <img src="{% static 'img/breadcrumb-vector-1.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-[34px] left-0 xl:left-auto xl:right-[90%]">
+        <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
+    </div>
+</section>
+<section class="py-[120px] xl:py-[80px] md:py-[60px]">
+    <div class="container mx-auto max-w-[calc(100%-37.1vw)] xxxl:max-w-[calc(100%-350px)] xl:max-w-[calc(100%-170px)] px-[12px] lg:max-w-full">
+        <h2 class="font-medium text-[60px] lg:text-[50px] md:text-[45px] sm:text-[40px] xxs:text-[35px] mb-[3px]"><span class="text-edpurple">Oops!</span> Payment Cancelled</h2>
+        <div class="text-[18px] text-etBlack mb-[41px] lg:mb-[31px] anim-text">
+            {% include "includes/messages.html" %}
+        </div>
+        <a href="{% url 'home' %}" class="bg-edpurple h-[56px] rounded-[10px] px-[24px] inline-flex items-center justify-center gap-[10px] font-medium text-[16px] text-white hover:bg-edblue">Back To Home Page <i class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+</section>
+{% endblock body %}

@@ -58,6 +58,8 @@ TEMPLATES = [
     },
 ]
 
+LOGIN_URL = '/login/'
+
 ASGI_APPLICATION = "config.asgi.application"
 
 WSGI_APPLICATION = "config.wsgi.application"
@@ -124,6 +126,24 @@ SITE_TITLE = "Learning site admin"
 SITE_HEADER = "Learning administration"
 INDEX_TITLE = "Dashboard administration"
 
+PAYMENT_GATEWAY_USERNAME = os.environ.get("PAYMENT_GATEWAY_USERNAME", default='mwtest')
+PAYMENT_GATEWAY_PASSWORD = os.environ.get("PAYMENT_GATEWAY_PASSWORD", default='WHaNFE5C3qlChqNbAzH4')
+PAYMENT_GATEWAY_TERMINAL_ID = os.environ.get("PAYMENT_GATEWAY_TERMINAL_ID", default='111111')
+
+PAYMENT_GATEWAY_PROD = os.environ.get("PAYMENT_GATEWAY_PROD", default="0") == "1"
+
+PAYMENT_WEBHOOK_SECRET = os.environ.get("PAYMENT_WEBHOOK_SECRET", default="")
+PAYMENT_FINISH_URL = os.environ.get("PAYMENT_FINISH_URL", default="http://127.0.0.1:8000/success/")
+PAYMENT_NOTIFICATION_URL = os.environ.get("PAYMENT_NOTIFICATION_URL", default="http://127.0.0.1:8000/api/payment/webhook/")
+PAYMENT_GATEWAY_URL = os.environ.get("PAYMENT_GATEWAY_URL", default="https://uat-sandbox-3ds-api.qi.iq")
+USE_SIGNATURE_VERIFICATION = os.environ.get("USE_SIGNATURE_VERIFICATION", default=False) == "1"
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = ['https://example.com', 'https://www.example.com',]
+CSRF_ALLOWED_ORIGINS = ["https://example.com"]
+CORS_ORIGINS_WHITELIST = ["https://example.com"]
 
 AUTHENTICATION_BACKENDS = [
     'main.backends.PhoneEmailUsernameBackend',

@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 register = template.Library()
 
 @register.simple_tag
-def rating_to_stars(rating):
+def rating_to_stars(rating=0):
     full_star = '<i class="fa-solid fa-star"></i>'
     half_star = '<i class="fa-solid fa-star-half-stroke"></i>'
     empty_star = '<i class="far fa-star"></i>'

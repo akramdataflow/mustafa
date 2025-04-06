@@ -4,11 +4,11 @@
 {% block body %}
 <section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
     <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-        <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">About us</h1>
+        <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">{% trans 'About us' %}</h1>
         <ul class="flex items-center justify-center gap-[10px] text-white">
-            <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+            <li><a href="{% url 'home' %}" class="text-edyellow">{% trans 'Home' %}</a></li>
             <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
-            <li>About us</li>
+            <li>{% trans 'About us' %}</li>
         </ul>
     </div>
 
@@ -20,7 +20,7 @@
 <section class="py-[120px] xl:py-[80px] md:py-[60px]">
     <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
         <div class="flex sm:flex-col items-start justify-between gap-[15px]">
-            <h2 class="ed-section-title">About the Edutics University</h2>
+            <h2 class="ed-section-title">{% trans 'About the Learning Center' %}</h2>
 
             <div class="max-w-[50%] sm:max-w-full mb-[60px]">
                 <p class="text-edgray2 mb-[25px]">lobortis. Nullam sollicitudin velit ut rhoncus cursus. Proin eu ligula non quam facilisis pellentesque eget in lorem. Ut pharetra velit arcu, eu blandit justo blandit eu. Vestibulum id consequat.</p>

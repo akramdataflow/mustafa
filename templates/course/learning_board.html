@@ -2,26 +2,6 @@
 {% load static i18n %}
 {% block title %}{% trans "Learning Board" %}{% endblock title %}
 {% block body %}
-<div class="ed-overlay group">
-    <div class="fixed inset-0 z-[100] group-[.active]:bg-edblue/80 duration-[400ms] pointer-events-none group-[.active]:pointer-events-auto"></div>
-</div>
-<div class="ed-search group">
-    <form action="#" class="bg-white fixed z-[100] top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] h-[100px] md:h-[70px] xxs:h-[50px] w-[1224px] max-w-[95%] flex gap-[10px] rounded-full overflow-hidden px-[40px] xxs:px-[20px] pointer-events-none opacity-0 group-[.active]:pointer-events-auto group-[.active]:opacity-100 duration-[400ms]">
-        <input type="search" name="ed-search" placeholder="Search Here..." class="bg-transparent w-full focus:outline-none">
-        <button class="text-[25px] md:text-[22px] xxs:text-[20px]"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-</div>
-<div class="ed-sidebar">
-    <div class="translate-x-[100%] transition-transform ease-linear duration-300 fixed right-0 w-full max-w-[25%] xl:max-w-[30%] lg:max-w-[40%] md:max-w-[50%] sm:max-w-[60%] xxs:max-w-full bg-white h-full z-[100] overflow-auto">
-        <div class="ed-sidebar-heading p-[20px] lg:p-[20px] border-b border-edgray/20">
-            <div class="logo flex justify-between items-center">
-                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
-                <button type="button" class="ed-sidebar-close-btn border border-edgray/20 w-[45px] aspect-square shrink-0 text-black text-[22px] rounded-full hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
-        <div class="ed-header-nav-in-mobile"></div>
-    </div>
-</div>
 <main>
     <section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
         <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
@@ -37,54 +17,96 @@
             <img src="{% static 'img/breadcrumb-vector-2.svg' %}" alt="vector" class="absolute -z-[1] pointer-events-none bottom-0 right-0 xl:right-auto xl:left-[60%]">
         </div>
     </section>
-    <div class="py-[120px] xl:py-[80px] md:py-[60px]">
+    <div class="ed-event-details-content py-[120px] xl:py-[80px] md:py-[60px]">
         <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-            <div class="grid grid-cols-3 md:grid-cols-2 xxs:grid-cols-1 gap-[30px] lg:gap-[20px]">
-                {% for course in enrolled_course.courses.all %}
-                <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
-                    <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
-                        <img src="{{course.image.url}}" alt="{{ course.name }}" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
-                        <span class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
-                            <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
-                            <span class="txt">{{ course.duration_format }}</span>
-                        </span>
+            <div class="flex gap-[30px] lg:gap-[20px] md:flex-col md:items-center">
+                <!-- left content -->
+                <div class="left grow space-y-[30px] md:space-y-[20px]">
+                    {% if enrolled_courses.courses.exists %}
+                    <div class="grid grid-cols-3 md:grid-cols-2 xxs:grid-cols-1 gap-[30px] lg:gap-[20px]">
+                        {% for course in enrolled_course.courses.all %}
+                        <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
+                            <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
+                                <img src="{{course.image.url}}" alt="{{ course.name }}" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                                <span class="absolute bg-edyellow px-[10px] h-[33px] flex gap-[8px] items-center top-[16px] left-[16px] rounded-[6px]">
+                                    <span class="icon"><img src="{% static 'img/icon/clock.svg' %}" alt="icon"></span>
+                                    <span class="txt">{{ course.duration_format }}</span>
+                                </span>
+                            </div>
+                            <div class="flex justify-between items-center mb-[16px]">
+                                <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">{{ course.level }}</span>
+                                <span class="text-edpurple font-semibold text-[20px]">{{ course.price }} {{ course.currency.code3 }}</span>
+                            </div>
+                            <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.slug %}" class="hover:text-edpurple">{{ course.name }}</a></h5>
+                            <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
+                                <div class="flex items-center gap-[8px] text-[14px] text-edgray">
+                                    <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
+                                    <span class="txt">{{ course.lessons.count }} Lesson</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
+                                <!-- course author -->
+                                <div class="flex items-center gap-[8px]">
+                                    {% for teacher in course.teachers.all %}
+                                    {% comment %}
+                                    <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}" class="w-[34px] aspect-square object-cover">
+                                    {% endcomment %}
+                                    <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edpurple">{{ teacher }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
-                    <div class="flex justify-between items-center mb-[16px]">
-                        <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">{{ course.level }}</span>
-                        <span class="text-edpurple font-semibold text-[20px]">{{ course.price }} {{ course.currency.code3 }}</span>
-                    </div>
-                    <h5 class="font-semibold text-[20px] text-edblue mb-[23px]"><a href="{% url 'course_details' course.slug %}" class="hover:text-edpurple">{{ course.name }}</a></h5>
-                    <div class="flex flex-wrap items-center gap-x-[30px] gap-y-[10px]">
-                        <div class="flex items-center gap-[8px] text-[14px] text-edgray">
-                            <span class="icon"><img src="{% static 'img/icon/lesson.svg' %}" alt="icon"></span>
-                            <span class="txt">{{ course.lessons.count }} Lesson</span>
+                    {% else %}
+                    <div class="border border-[#e5e5e5] rounded-[10px] p-[20px]">
+                        <h5 class="font-semibold text-[20px] text-edblue mb-[23px] text-center">{% trans "You have not enrolled any course yet." %}</h5>
+                        <div class="text-center">
+                            <a href="{% url 'course_list' %}" class="ed-btn !rounded-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">{% trans "Browse Courses" %}</a>
                         </div>
                     </div>
-                    <div class="flex flex-wrap gap-x-[20px] gap-y-[15px] justify-between items-center border-t border-[#E5E5E5] pt-[24px] mt-[24px]">
-                        <!-- course author -->
-                        <div class="flex items-center gap-[8px]">
-                            {% for teacher in course.teachers.all %}
-                            {% comment %}
-                            <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}" class="w-[34px] aspect-square object-cover">
-                            {% endcomment %}
-                            <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edpurple">{{ teacher }}</a>
-                            {% endfor %}
-                        </div>
+                    {% endif %}
+                </div>
+                <!-- right content -->
+                <div class="right max-w-full w-[370px] lg:w-[360px] shrink-0 space-y-[30px] md:space-y-[25px]">
+                    <div class="border border-[#e5e5e5] rounded-[10px] px-[30px] xxs:px-[15px] py-[35px] xxs:py-[25px]">
+                        <h5 class="font-semibold text-[24px] text-edblue mb-[20px]">{% trans "Student Information" %} 
+                            <a href="" class="hover:text-edpurple float-right">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </h5>
+
+                        <ul class="mb-[30px]">
+                            <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                <span class="flex items-center gap-[5px] font-semibold text-edblue">
+                                    <span class="icon"><img src="{% static 'img/icon/user.svg' %}" alt="icon"></span>
+                                    <span>{% trans "Name" %}:</span>
+                                </span>
+                                <span class="text-[15px] text-edgray">{{ user.student.name }}</span>
+                            </li>
+
+                            <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                <span class="flex items-center gap-[5px] font-semibold text-edblue">
+                                    <span class="icon"><img src="{% static 'img/icon/mail-purple.svg' %}" alt="icon"></span>
+                                    <span>{% trans "Email" %}:</span>
+                                </span>
+                                <span class="text-[15px] text-edgray">{{ user.student.email }}</span>
+                            </li>
+
+                            <li class="py-[15px] flex flex-wrap gap-[10px] items-center justify-between border-t border-[#e5e5e5] last:border-b">
+                                <span class="flex items-center gap-[5px] font-semibold text-edblue">
+                                    <span class="icon"><img src="{% static 'img/icon/phone-volume.svg' %}" alt="icon"></span>
+                                    <span>{% trans "Phone" %}:</span>
+                                </span>
+                                <span class="text-[15px] text-edgray">{{ user.student.phone_number }}</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="ed-btn gap-[10px] !h-[56px] !rounded-[8px] w-full">Get Ticket Now <span><i class="fa-solid fa-arrow-right-long"></i></span></a>
                     </div>
                 </div>
-                {% endfor %}
             </div>
         </div>
-        {% if not enrolled_courses.courses.exists %}
-        <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-            <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px]">
-                <h5 class="font-semibold text-[20px] text-edblue mb-[23px] text-center">{% trans "You have not enrolled any course yet." %}</h5>
-                <div class="text-center">
-                    <a href="{% url 'course_list' %}" class="ed-btn !rounded-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">{% trans "Browse Courses" %}</a>
-                </div>
-            </div>
-        </div>
-        {% endif %}
     </div>
 </main>
 {% endblock %}

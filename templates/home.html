@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n humanize %}
 {% block body %}
 <main>
     <!-- BANNER SECTION START -->
@@ -8,30 +8,16 @@
             <div class="flex md:flex-col gap-x-[112px] gap-y-[40px] items-center">
                 <!-- banner text -->
                 <div class="max-w-[49%] xxxl:max-w-[45.5%] md:max-w-full shrink-0">
-                    <h6 class="ed-section-sub-title !text-black before:!content-none">ONLINE <span
-                            class="text-edpurple">Learning</span> COURSE</h6>
-                    <h1
-                        class="font-medium text-[clamp(35px,5.4vw,80px)] text-edblue tracking-tight leading-[1.12] mb-[25px]">
+                    <h6 class="ed-section-sub-title !text-black before:!content-none">ONLINE <span class="text-edpurple">Learning</span> COURSE</h6>
+                    <h1 class="font-medium text-[clamp(35px,5.4vw,80px)] text-edblue tracking-tight leading-[1.12] mb-[25px]">
                         Explore Your Skills With <span class="font-bold"><span class="inline-block text-edpurple relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[240px] before:h-[21px] before:bg-[url('../assets/img/banner-2-title-vector.svg')]">Online</span>
                             Class</span></h1>
-                    <!--<p class="text-edgray font-medium mb-[41px]">Smply dummy text of the printing and typesetting
-                        industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled</p>
-                    <div class="flex flex-wrap gap-[10px]">
-                        <a href="course-filter.html"
-                            class="ed-btn !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">start
-                            a course</a>
-                        <a href="about.html"
-                            class="ed-btn !bg-transparent border border-black !text-black hover:!bg-black hover:!text-white">about
-                            us</a>
-                    </div>-->
                 </div>
 
                 <!-- banner image -->
                 <div class="w-max relative z-[1] flex gap-[30px] items-center">
-                    <img src="{% static 'img/treu/WhatsApp Image 2024-12-17 at 2.04.27 PM (1).jpeg' %}" alt="banner image"
-                        class="border-[10px] border-white rounded-[20px] max-w-[241px] aspect-[261/366]">
-                    <img src="{% static 'img/treu/WhatsApp Image 2024-12-17 at 2.04.28 PM.jpeg' %}" alt="banner image" class="rounded-[20px]">
+                    <img src="{% static 'img/treu/mustafa2.jpeg' %}" alt="mustafa2" class="border-[10px] border-white rounded-[20px] max-w-[241px] aspect-[261/366]">
+                    <img src="{% static 'img/treu/mustafa1.jpeg' %}" alt="mustafa1" class="rounded-[20px]">
                 
                     <!-- vectors -->
                     <div>
@@ -59,33 +45,25 @@
     </section>
     <!-- BANNER SECTION END -->
 
-
-    <!-- CATEGORIES SECTION START -->
-    <div class="ed-2-categories -mt-[98px] relative z-[2]">
-       
-    </div>
-    <!-- CATEGORIES SECTION END -->
-
-
     <!-- COURSES SECTION START -->
     <section class="ed-2-courses py-[120px] xl:py-[80px] md:py-[60px]">
         <div class="mx-[9.2%] xxxl:mx-[8.2%] xxl:mx-[3%]">
             <!-- section heading -->
             <div class="text-center mb-[21px]">
-                <h6 class="ed-section-sub-title">Our Courses</h6>
-                <h2 class="ed-section-title">Popular Courses</h2>
+                <h6 class="ed-section-sub-title">{% trans "Our Courses" %}</h6>
+                <h2 class="ed-section-title">{% trans "Popular Courses" %}</h2>
             </div>
 
 
             <!-- course cards -->
             <div class="ed-2-courses-container grid grid-cols-4 xl:grid-cols-3 md:grid-cols-2 xs:grid-cols-1 gap-[30px] xxl:gap-[20px]">
                 <!-- single course -->
-                 {% for course in courses %}
+                 {% for course in courses|slice:":4" %}
                 <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px] group">
                     <!-- course image  -->
                     <div class="relative overflow-hidden rounded-[10px] mb-[24px]">
                         {% if course.image %}
-                        <img src="{{ course.image.url }}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
+                        <img src="{{ course.image.url }}" alt="{{ course.name }}" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
                         {% else %}
                         <img src="{% static 'img/course-details.jpg' %}" alt="Course Image" class="aspect-[330/223] w-full object-cover group-hover:scale-110">
                         {% endif %}
@@ -98,9 +76,8 @@
 
                     <!-- course infos -->
                     <div class="flex justify-between items-center mb-[16px]">
-                        <span
-                            class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">Expert</span>
-                        <span class="text-edpurple font-semibold text-[20px]">{{course.price}} {{ course.currency.code3 }}</span>
+                        <span class="inline-flex items-center justify-center border border-[#e5e5e5] px-[10px] h-[33px] rounded-[6px] font-medium text-[#808080] text-[14px]">{{ course.level }}</span>
+                        <span class="text-edpurple font-semibold text-[20px]">{% if course.get_total_price > 0 %}{{ course.get_total_price|floatformat:2|intcomma }} {{ course.currency.code3 }} {% else %} {% trans "Free" %} {% endif %}</span>
                     </div>
 
                     <!-- course title -->
@@ -112,7 +89,7 @@
                             <div class="flex items-center gap-[8px]">
                                 {% for teacher in course.teachers.all %}
                                 {% comment %}
-                                <img src="{{ teacher.image.url }}" alt="Course Author Image" class="w-[34px] aspect-square object-cover">
+                                <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}" class="w-[34px] aspect-square object-cover">
                                 {% endcomment %}
                                 <a href="{% url 'teacher_details' teacher.slug %}" class="hover:text-edpurple">{{ teacher }}</a>
                                 {% endfor %}
@@ -146,21 +123,17 @@
 
                 <!-- right -->
                 <div class="max-w-[54%] md:max-w-full">
-                    <h6 class="ed-section-sub-title">About us</h6>
-                    <h2 class="ed-section-title mb-[6px]">Learn New <span
-                            class="inline-block font-bold relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[137px] before:h-[14px] before:bg-[url('../assets/img/banner-2-title-vector.svg')] before:bg-[length:100%_100%]">Skills</span>
-                        To Go Ahead For Your Career</h2>
-                    <p class="text-edgray mb-[34px]">Aonsectetur adipiscing elit Aenean scelerisque augue vitae
-                        consequat Juisque eget congue velit in cursus leo sodales the turpis euismod quis sapien euismod
-                        quis sapien the.</p>
+                    <h6 class="ed-section-sub-title">{% trans "About us" %}</h6>
+                    <h2 class="ed-section-title mb-[6px]">{% trans "Learn New" %} <span class="inline-block font-bold relative before:absolute before:left-0 before:top-[calc(100%-6px)] before:w-[137px] before:h-[14px] before:bg-[url('../assets/img/banner-2-title-vector.svg')] before:bg-[length:100%_100%]">{% trans "Skills" %}</span>{% trans "To Go Ahead For Your Career" %}</h2>
+                    <p class="text-edgray mb-[34px]">{% trans "Come with us and learn new skills to go ahead for your career" %}</p>
                     <ul
                         class="ed-about-list font-medium text-[18px] text-edblue grid grid-cols-2 xxs:grid-cols-1 gap-[20px] xxs:gap-[15px] mb-[52px] *:pl-[40px] *:relative *:before:absolute *:before:left-0 *:before:-top-[3px] *:before:w-[30px] *:before:aspect-square *:before:border *:before:border-edpurple *:before:rounded-full *:before:bg-[url(/static/img/icon/checkmark.svg)] *:before:bg-no-repeat *:before:bg-[length:15px_13px] *:before:bg-center">
-                        <li>Flexible Course Plan</li>
-                        <li>Educator Support</li>
-                        <li>Expert mentors</li>
-                        <li>Lifetime Access</li>
+                        <li>{% trans "Flexible Course Plan" %}</li>
+                        <li>{% trans "Educator Support" %}</li>
+                        <li>{% trans "Expert mentors" %}</li>
+                        <li>{% trans "Lifetime Access" %}</li>
                     </ul>
-                    <a href="#" class="ed-btn">know more</a>
+                    <a href="javascript:void(0)" class="ed-btn">{% trans "know more" %}</a>
                 </div>
             </div>
         </div>
@@ -510,7 +483,7 @@
             
             <div class="grid grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 xxs:grid-cols-1 gap-[30px] md:gap-[15px]">
                 <!-- single instructor -->
-                {% for teacher in teachers %}
+                {% for teacher in teachers|slice:":4" %}
                 <div class="text-center group">
                     <!-- img -->
                     <div class="relative mb-[18px] overflow-hidden rounded-[12px]">

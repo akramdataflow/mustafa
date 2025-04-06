@@ -12,13 +12,15 @@ def course_list_view(request):
 def course_details_view(request, slug: str):
     course = get_object_or_404(Course, slug=slug)
     average_rating = Review.objects.filter(course=course).aggregate(Avg('rating'))['rating__avg']
-    num_enrollments = EnrolledCourse.objects.filter(course=course).count()
+    enrollmed_course = None
+    if request.user.is_authenticated:
+        enrollmed_course = EnrolledCourse.objects.filter(course=course, user=request.user).first()
     context = {
         'courses': Course.objects.filter(name=course.name), 
         'course': course, 
-        'average_rating': average_rating, 
-        'num_enrollments':num_enrollments, 
+        'average_rating': average_rating,
         'teachers': course.teachers,
+        'enrollmed_course': enrollmed_course
     }
     return render(request, 'course/course_details.html', context)
 

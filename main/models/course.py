@@ -86,6 +86,10 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
             total_price = self.price - (self.price * self.discount / 100)
         return total_price
     
+    def get_enrolled_number(self) -> int:
+        from .enrollment import EnrolledCourse
+        return EnrolledCourse.objects.filter(course=self).count()
+    
 
 @receiver(pre_save, sender=Course)
 def set_default_values(sender, instance, **kwargs):
