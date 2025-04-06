@@ -25,11 +25,11 @@
 <main>
     <section class="pt-[127px] xl:pt-[143px] lg:pt-[120px] sm:pt-[100px] xxs:pt-[80px] pb-[158px] xl:pb-[118px] lg:pb-[98px] sm:pb-[68px] xs:pb-[48px] text-center bg-[url('../assets/img/breadcrumb-bg.jpg')] bg-no-repeat bg-cover bg-center relative z-[1] overflow-hidden before:absolute before:-z-[1] before:inset-0 before:bg-edblue/70 before:pointer-events-none">
         <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
-            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">Learning Board</h1>
+            <h1 class="font-semibold text-[clamp(35px,6vw,56px)] text-white">{% trans "Learning Board" %}</h1>
             <ul class="flex items-center justify-center gap-[10px] text-white">
-                <li><a href="{% url 'home' %}" class="text-edyellow">Home</a></li>
+                <li><a href="{% url 'home' %}" class="text-edyellow">{% trans "Home" %}</a></li>
                 <li><span class="text-[12px]"><i class="fa-solid fa-angle-double-right"></i></span></li>
-                <li>Learning Board</li>
+                <li>{% trans "Learning Board" %}</li>
             </ul>
         </div>
         <div class="vectors">
@@ -78,9 +78,9 @@
         {% if not enrolled_courses.courses.exists %}
         <div class="mx-[19.71%] xxxl:mx-[14.71%] xxl:mx-[9.71%] xl:mx-[5.71%] md:mx-[12px]">
             <div class="ed-2-single-course mix personal-skill border border-[#e5e5e5] rounded-[10px] p-[20px]">
-                <h5 class="font-semibold text-[20px] text-edblue mb-[23px] text-center">You have not enrolled any course yet.</h5>
-                <div class="space-y-[15px]">
-                    <a href="{% url 'course_list' %}" class="ed-btn w-full !rounded-[10px] !bg-transparent border border-edblue !text-edblue hover:!bg-edblue hover:!text-white">Browse Courses</a>
+                <h5 class="font-semibold text-[20px] text-edblue mb-[23px] text-center">{% trans "You have not enrolled any course yet." %}</h5>
+                <div class="text-center">
+                    <a href="{% url 'course_list' %}" class="ed-btn !rounded-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">{% trans "Browse Courses" %}</a>
                 </div>
             </div>
         </div>

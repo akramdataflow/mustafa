@@ -2,6 +2,7 @@ import uuid
 import random
 import string
 import math
+import decimal
 
 from django.utils.translation import gettext_lazy as _
 from django.db import models
@@ -61,6 +62,8 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
         return self.name
     
     def has_discount(self) -> bool:
+        if not self.discount_starts_at or not self.discount_ends_at:
+            return False
         today = timezone.now().date()
         return self.discount_starts_at <= today <= self.discount_ends_at
     
@@ -76,6 +79,12 @@ class Course(TimeStampedModel, UniqueIdentifierModel):
         seconds = self.duration % 60
         hours = math.floor(minutes / 60)
         return f'{hours}:{minutes:02d}:{seconds:02d}' if hours > 0 else f'{minutes}:{seconds:02d}'
+    
+    def get_total_price(self) -> decimal.Decimal:
+        total_price = self.price
+        if self.has_discount():
+            total_price = self.price - (self.price * self.discount / 100)
+        return total_price
     
 
 @receiver(pre_save, sender=Course)

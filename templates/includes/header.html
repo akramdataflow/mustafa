@@ -1,34 +1,40 @@
-{% load static i18n %}
+{% load static i18n humanize %}
 <div class="ed-cart-bar group">
     <div class="w-[420px] max-w-full fixed z-[999] right-0 top-0 h-full bg-white flex flex-col translate-x-[100%] duration-[400ms] group-[.active]:translate-x-0">
         <!-- heading -->
         <div class="flex items-center justify-between px-[25px] border-b border-edgray/20 pb-[23px] pt-[22px]">
-            <h5 class="text-[20px]">My Cart List</h5>
-            <h6>(03 Items)</h6>
+            <h5 class="text-[20px]">{% trans "Your Cart" %}</h5>
+            <h6>({{ cart.items.all|length|default:"0" }} {% trans "Items" %})</h6>
         </div>
 
         <!-- cart items -->
         <div>
+            {% for cart_item in cart.items.all %}
             <!-- single cart item -->
             <div class="flex items-center gap-[20px] py-[30px] px-[25px] border-b border-edgray/20">
-                <!-- <img src="assets/img/cart-item-3.jpg" alt="Cart Item Image" class="rounded-[10px] shrink-0"> -->
+                <img src="{{ cart_item.course.image.url }}" alt="{{ cart_item.course.name }}" class="rounded-[10px] shrink-0" style="max-width: 74px;">
                 <div class="grow">
-                    <h6 class="font-medium text-[18px] text-edblue"><a href="course-details.html" class="hover:text-edpurple">WordPress Development</a></h6>
-                    <h6 class="font-medium text-edgray">$15.00</h6>
+                    <h6 class="font-medium text-[18px] text-edblue"><a href="{% url 'course_details' cart_item.course.slug %}" class="hover:text-edpurple">{{ cart_item.course.name }}</a></h6>
+                    <h6 class="font-medium text-edgray">{{ cart_item.course.price|floatformat:2|intcomma }} {{ cart_item.course.currency.code3 }}</h6>
                 </div>
-                <button class="text-[20px] text-edgray shrink-0 hover:text-edpurple">x</button>
+                <button onclick="window.location.href='{% url 'remove_from_cart' cart_item.course.slug %}'" class="text-[20px] text-edgray shrink-0 hover:text-edpurple"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            {% empty %}
+            <p class="p-[25px] text-center text-edgray">{% trans "Your cart is empty" %}</p>
+            <p class="text-center">
+                <a href="{% url 'course_list' %}" class="ed-btn !rounded-full !bg-transparent border border-edpurple !text-edpurple hover:!bg-edpurple hover:!text-white">{% trans "Browse Courses" %}</a>
+            </p>
+            {% endfor %}
         </div>
 
         <!-- cart bottom -->
         <div class="mt-auto px-[25px] mb-[30px]">
             <div class="flex items-center justify-between font-medium text-[18px] text-edblue mb-[33px]">
-                <span>Total</span>
-                <span>$999</span>
+                <span>{% trans "Total" %}</span>
+                <span>{{ cart.get_total_price|floatformat:2|intcomma }} {{ cart.get_currency.code3 }}</span>
             </div>
             <div class="space-y-[15px]">
-                <a href="#" class="ed-btn w-full !rounded-[10px] !bg-transparent border border-edblue !text-edblue hover:!bg-edblue hover:!text-white">Proceed to checkout</a>
-                <a href="#" class="ed-btn w-full !rounded-[10px]">Proceed to checkout</a>
+                <a href="#" class="ed-btn w-full !rounded-[10px]">{% trans "Proceed to checkout" %}</a>
             </div>
         </div>
     </div>
@@ -54,41 +60,23 @@
     <div class="flex lg:items-center lg:gap-[30px]">
         <div class="flex lg:flex-col items-center gap-[60px] xxl:gap-[25px] xl:gap-[30px] md:gap-y-[15px]">
             <ul class="to-go-to-sidebar-in-mobile ed-header-nav flex lg:flex-col gap-x-[43px] xxl:gap-x-[33px] font-kanit text-[17px] font-normal">
-                <li>
-                    <a href="{% url 'home' %}">Home</a>
-                </li>
-                <li>
-                    <a href="{% url 'about' %}">About us</a>
-                </li>
-                <li>
-                    <a href="{% url 'course_list' %}">Courses</a>
-                </li>
-                <li>
-                    <a href="{% url 'teachers' %}">Teachers</a>
-                </li>
-                <li>
-                    <a href="">News</a>
-                </li>
-                <li>
-                    <a href="{% url 'contact' %}">Contact us</a>
-                </li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'about' %}">{% trans "About" %}</a></li>
+                <li><a href="{% url 'course_list' %}">{% trans "Courses" %}</a></li>
+                <li><a href="{% url 'teachers' %}">{% trans "Teachers" %}</a></li>
+                <li><a href="{% url 'contact' %}">{% trans "Contact us" %}</a></li>
             </ul>
 
             <!-- right actions -->
             <div class="flex items-center gap-x-[60px] xxl:gap-x-[25px] lg:gap-x-[20px]">
                 <button class="ed-cart-opener-btn group">
-                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g>
-                            <path d="M12.9894 13.6354H6.93871C6.06616 13.6354 5.2925 13.0682 5.05637 12.2557L3.01122 5.38995C2.93856 5.14134 2.69705 4.97072 2.42122 4.97072H0.818742C0.446713 4.97072 0.145996 4.67212 0.145996 4.30421C0.145996 3.93629 0.446713 3.6377 0.818742 3.6377H2.42122C3.29377 3.6377 4.06676 4.2049 4.30289 5.01737L4.68568 6.30374H14.9753C15.3951 6.30374 15.7934 6.50169 16.0403 6.83361C16.2852 7.16287 16.3558 7.57477 16.234 7.96402L14.8462 12.3283C14.5744 13.1161 13.8296 13.6354 12.9894 13.6354Z" class="fill-white group-hover:fill-edyellow"></path>
-                            <path d="M7.54617 16.9687C6.80414 16.9687 6.20068 16.3707 6.20068 15.6353C6.20068 14.9 6.80414 14.302 7.54617 14.302C8.28821 14.302 8.89167 14.9 8.89167 15.6353C8.89167 16.3707 8.28821 16.9687 7.54617 16.9687Z" class="fill-white group-hover:fill-edyellow"></path>
-                            <path d="M12.2556 16.9687C11.5136 16.9687 10.9102 16.3707 10.9102 15.6353C10.9102 14.9 11.5136 14.302 12.2556 14.302C12.9977 14.302 13.6011 14.9 13.6011 15.6353C13.6011 16.3707 12.9977 16.9687 12.2556 16.9687Z" class="fill-white group-hover:fill-edyellow"></path>
-                        </g>
-                    </svg>
+                    <i class="fa-solid fa-cart-shopping text-[15px] text-white group-hover:text-edyellow"></i>
+                    {% if cart.items.exists %}<sup class="ed-cart-count text-[15px] text-white bg-edyellow rounded-full align-super" style="padding: 0 8px;">{{ cart.items.count }}</sup>{% endif %}
                 </button>
                 {% if user.is_authenticated %}
-                <a href="{% url 'learning_board' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">Learning Board</a>
+                <a href="{% url 'learning_board' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">{% trans "Learning Board" %}</a>
                 {% else %}
-                <a href="{% url 'signup' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">Join Us</a>
+                <a href="{% url 'signup' %}" class="ed-btn to-go-to-sidebar-in-mobile lg:m-[20px]">{% trans "Join Us" %}</a>
                 {% endif %}
             </div>
         </div>

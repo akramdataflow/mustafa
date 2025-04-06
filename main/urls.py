@@ -16,5 +16,9 @@ urlpatterns = [
           path('<str:slug>/', views.course_details_view, name='course_details'),
           path('', views.course_list_view, name='course_list'),
      ])),
+     path('cart/', include(arg=[
+        path('to/add/<str:course_slug>/', views.add_to_cart_view, name='add_to_cart'),
+        path('from/remove/<str:course_slug>/', views.remove_from_cart_view, name='remove_from_cart'),
+    ])),
      path('', views.home_view, name='home'),
 ]
